@@ -20,20 +20,41 @@
     }
 
     .container {
-      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 100px;
+      margin-bottom: 120px;
     }
 
     img {
       max-width: 100%;
       height: auto;
-      width: 200px; /* ขนาดเริ่มต้นที่เหมาะสม */
+      width: 200px;
+    }
+
+    .chapter-button {
+      margin-bottom: 0px;
+    }
+
+    .story-button {
+      margin-bottom: 0px;
     }
   </style>
 </head>
 
 <body>
   <div class="container">
-    
+    <div>
+      <a href="Chapter.html">
+        <img src="textimg/CHAPTERtxt.png" alt="" class="chapter-button">
+      </a>
+    </div>
+    <div>
+      <a href="Chapter.html">
+        <img src="textimg/STORYtxt.png" alt="" class="story-button">
+      </a>
+    </div>
   </div>
 </body>
 
