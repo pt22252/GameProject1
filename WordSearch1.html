@@ -15,11 +15,12 @@
             background-repeat: no-repeat;
             color: rgb(0, 0, 0);
             text-align: center;
+            padding: 20px;
         }
 
         .grid {
             display: grid;
-            justify-content: center;
+            justify-content: right;
             margin: 20px auto;
             grid-template-columns: repeat(10, 45px);
         }
@@ -30,9 +31,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 1px solid #ccc;
             font-size: 30px;
-            background-color: rgb(255, 255, 255);
             cursor: pointer;
             user-select: none;
             position: relative;
@@ -51,7 +50,7 @@
         .words span {
             margin-right: 5px;
             font-size: 18px;
-            color: rgb(255, 255, 255);
+            color: rgb(0, 0, 0);
         }
 
         .words span.found {
@@ -65,7 +64,7 @@
             padding: 5px 10px;
             border-radius: 5px;
             /* ขอบโค้งมน */
-            background-color: #ffffff;
+            background-color: #ffffff00;
             /* พื้นหลังสีอ่อน */
             display: inline-block;
             /* ให้กรอบขยายเท่ากับขนาดข้อความ */
@@ -74,19 +73,21 @@
 </head>
 
 <body>
-    <div class="words" id="word-list"><strong>Find these words:</strong>
+    <div class="words" id="word-list" style="height: fit-content; padding-left: 50px;; margin-top: 70px; line-height: 2;">
         <span data-word="FOX">FOX</span>,
         <span data-word="BIRD">BIRD</span>,
         <span data-word="CRICKETS">CRICKETS</span>,
+        <br>
         <span data-word="BEAR">BEAR</span>,
         <span data-word="POMERNIAN">POMERNIAN</span>,
         <span data-word="ELEPHANT">ELEPHANT</span>,
+        <br>
         <span data-word="OWL">OWL</span>,
         <span data-word="SQUIRREL">SQUIRREL</span>,
         <span data-word="SNAKE">SNAKE</span>
     </div>
-    <div id="word-grid" class="grid"></div>
-    <div id="timer">Time: 00:00</div>
+    <div id="word-grid" class="grid" style="color: #000000;background-color: #ffffff;border-radius: 8px;"></div>
+    <div id="timer" style="height: fit-content;background-color: #7a3700">Time: 00:00</div>
 
     <script>
         const words = ["FOX", "BIRD", "CRICKETS", "BEAR", "POMERNIAN", "ELEPHANT", "OWL", "SQUIRREL", "SNAKE"];
