@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -86,7 +86,6 @@
       cursor: pointer;
       user-select: none;
       margin-left: 300px; /* เพิ่มระยะห่างจากขอบซ้าย */
-      /*display: grid;*/
     }
     .grid div:hover {
       background-color: #d0ebff;
@@ -136,26 +135,46 @@
   </footer>
 
   <script>
-    const words = ["FOX", "BIRD", "RABBIT","BEAR", 'POMERNIAN', 'ELEPHANT', "SWANS", "SQUIRREL", "SNAKE"];
+    const words = ["FOX"];
     const gridSize = 10;
-
-    // Timer
+    
     let seconds = 0;
     const timerElement = document.getElementById("timer");
+    let timerInterval;
+
     const updateTimer = () => {
       seconds++;
       const mins = String(Math.floor(seconds / 60)).padStart(2, "0");
       const secs = String(seconds % 60).padStart(2, "0");
       timerElement.textContent = `Time: ${mins}:${secs}`;
     };
-    setInterval(updateTimer, 1000);
 
-    // Generate an empty grid
+    timerInterval = setInterval(updateTimer, 1000);
+
+    const foundWords = new Set();
+
+    const stopTimer = () => {
+        clearInterval(timerInterval);
+        alert(`Congratulations! You found all words in ${timerElement.textContent}`);
+    };
+
+    let selectedCells = []; // เก็บเซลล์ที่ถูกเลือก
+
+    const checkWordFound = () => {
+        const selectedWord = selectedCells.map(cell => cell.textContent).join('');
+        if (words.includes(selectedWord) && !foundWords.has(selectedWord)) {
+            foundWords.add(selectedWord);
+            console.log(`Found word: ${selectedWord}`);
+            if (foundWords.size === words.length) {
+                stopTimer(); // หยุดเวลาเมื่อพบครบทุกคำ
+            }
+        }
+    };
+
     const grid = Array.from({ length: gridSize }, () =>
       Array(gridSize).fill("")
     );
 
-    // Place words in the grid
     const placeWord = (word) => {
       let placed = false;
       while (!placed) {
@@ -192,7 +211,11 @@
             );
             placed = true;
           }
-        } else if (direction === "diagonal" && startRow + wordLength <= gridSize && startCol + wordLength <= gridSize) {
+        } else if (
+          direction === "diagonal" &&
+          startRow + wordLength <= gridSize &&
+          startCol + wordLength <= gridSize
+        ) {
           if (
             word.split("").every(
               (letter, index) =>
@@ -212,7 +235,6 @@
 
     words.forEach((word) => placeWord(word));
 
-    // Fill empty spaces with random letters
     const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     grid.forEach((row, rowIndex) =>
       row.forEach((cell, colIndex) => {
@@ -224,9 +246,22 @@
       })
     );
 
-    // Render the grid
     const gridContainer = document.getElementById("word-grid");
     gridContainer.style.gridTemplateColumns = `repeat(${gridSize}, 40px)`;
+
+    const handleCellClick = (cellDiv) => {
+      cellDiv.classList.toggle("highlight");
+      if (cellDiv.classList.contains("highlight")) {
+        selectedCells.push(cellDiv); // เก็บเซลล์เมื่อคลิก
+      } else {
+        selectedCells = selectedCells.filter(cell => cell !== cellDiv); // ลบเซลล์เมื่อยกเลิกการเลือก
+      }
+
+      // เมื่อเลือกครบคำแล้ว จะตรวจสอบ
+      if (selectedCells.length === words[0].length) { 
+        checkWordFound(); // ตรวจสอบคำที่เลือก
+      }
+    };
 
     grid.forEach((row, rowIndex) => {
       row.forEach((cell, colIndex) => {
@@ -234,9 +269,7 @@
         cellDiv.textContent = cell;
         cellDiv.dataset.row = rowIndex;
         cellDiv.dataset.col = colIndex;
-        cellDiv.addEventListener("click", () => {
-          cellDiv.classList.toggle("highlight");
-        });
+        cellDiv.addEventListener("click", () => handleCellClick(cellDiv));
         gridContainer.appendChild(cellDiv);
       });
     });
