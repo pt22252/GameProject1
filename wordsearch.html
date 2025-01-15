@@ -14,6 +14,28 @@
       background-position: center; /* จัดภาพให้อยู่ตรงกลาง */
       background-repeat: no-repeat; /* ป้องกันการซ้ำของภาพ */
     }
+
+    @media (max-width: 1200px) {
+    .grid {
+        grid-auto-rows: 35px; /* ลดขนาดตารางเมื่อหน้าจอเล็กลง */
+        grid-auto-columns: 35px;
+    }
+    }
+
+    @media (max-width: 768px) {
+    .grid {
+        grid-auto-rows: 30px;
+        grid-auto-columns: 30px;
+    }
+    }
+
+    @media (max-width: 480px) {
+    .grid {
+        grid-auto-rows: 25px; /* ลดขนาดตารางให้เหมาะกับหน้าจอเล็ก */
+        grid-auto-columns: 25px;
+    }
+    }
+
     header {
       display: flex;
       justify-content: flex-end;
