@@ -1,5 +1,5 @@
 body {
-  background-image: url('background/SolveProblems1.png');
+  background-image: url('background/SolveProblems1.png'),url('background/SolveProblems2.png'),url('background/SolveProblems3.png');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% 100%;

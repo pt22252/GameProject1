@@ -1,20 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <style>
-        body {
-            background-image: url('background/SolveProblems2.png');
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: 100% 100%;
-        }
-
-        a {
-            text-align: center;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solve Problem Game</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
+<body>
+    <div class="game-container">
+        <div class="question">
+            <p>พี่สิงโตต้องการดับไฟ ช่วยเลือกอุปกรณ์ในการดับไฟหน่อยได้ไหม เอ~ พี่สิงโตควรใช้อะไรดี?</p>
+        </div>
+        <div class="options">
+            <div class="option-container">
+                <button class="option" data-correct="false">
+                    <img src="component/Bucket.png" alt="ถังไม้">
+                </button>
+                <button class="option" data-correct="false">
+                    <img src="component/Match.png" alt="ไม้ขีดไฟ">
+                </button>
+                <button class="option" data-correct="true">
+                    <img src="component/Umbrella.png" alt="ร่ม">
+                </button>
+            </div>
+        </div>
+        <div class="feedback"></div>
+        <button id="next-button" style="display: none;">Next</button>
+    </div>
+    <script src="script.js"></script>
 </body>
 
 </html>
