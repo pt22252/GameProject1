@@ -1,81 +1,73 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Word Search Game</title>
   <style>
-    body {
+   body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-image: url('Game 1 Word Search ch 4.png'); /* ชื่อไฟล์ภาพ */
+      background-image: url('background/WordSearch1.png'); /* ชื่อไฟล์ภาพ */
       background-size: cover; /* ขยายภาพให้เต็มจอ */
       background-position: center; /* จัดภาพให้อยู่ตรงกลาง */
       background-repeat: no-repeat; /* ป้องกันการซ้ำของภาพ */
     }
+
+    @media (max-width: 1200px) {
+    .grid {
+        grid-auto-rows: 35px; /* ลดขนาดตารางเมื่อหน้าจอเล็กลง */
+        grid-auto-columns: 35px;
+    }
+    }
+
+    @media (max-width: 768px) {
+    .grid {
+        grid-auto-rows: 30px;
+        grid-auto-columns: 30px;
+    }
+    }
+
+    @media (max-width: 480px) {
+    .grid {
+        grid-auto-rows: 25px; /* ลดขนาดตารางให้เหมาะกับหน้าจอเล็ก */
+        grid-auto-columns: 25px;
+    }
+    }
+
     header {
       display: flex;
       justify-content: flex-end;
       align-items: center;
-      background-color: rgba(0, 0, 0, 0.8); /* พื้นหลังโปร่งใสสำหรับ header */
-      color: #fff;
       padding: 10px 20px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      color: rgb(0, 0, 0);
     }
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f9;
-    }
-    header {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      background-color: #333;
-      color: #fff;
-      padding: 10px 20px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    header .menu {
+    header .menu-button {
       margin-left: 20px;
-      background-color: #444;
-      border: none;
+      background-color: #7C4B00;
       color: white;
-      padding: 8px 15px;
-      font-size: 14px;
-      cursor: pointer;
+      padding: 10px 15px;
+      border: none;
       border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
     }
-    header .menu:hover {
-      background-color: #555;
+    header .menu-button:hover {
+      background-color: #777;
     }
     header .timer {
-      font-size: 16px;
-      margin-right: 20px;
+      font-size: 18px;
     }
-    header .next {
-      margin-left: 20px;
-      background-color: #ff5733;
-      border: none;
-      color: white;
-      padding: 8px 15px;
-      font-size: 14px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-    header .next:hover {
-      background-color: #ff7043;
+    main {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
     h1 {
-      text-align: center;
       color: #333;
-      margin: 20px 0;
     }
     .grid {
       display: grid;
@@ -83,51 +75,106 @@
       margin: 20px auto;
     }
     .grid div {
-      width: 40px;
-      height: 40px;
+      width: 45px;
+      height: 45px;
       display: flex;
       align-items: center;
       justify-content: center;
       border: 1px solid #ccc;
-      font-size: 18px;
+      font-size: 30px;
       background-color: #fff;
       cursor: pointer;
       user-select: none;
+      margin-left: 300px; /* เพิ่มระยะห่างจากขอบซ้าย */
     }
     .grid div:hover {
       background-color: #d0ebff;
     }
     .words {
-      text-align: center;
+      margin-top: 20px;
       font-size: 20px;
       color: #ffffff;
-      margin-top: 20px;
     }
     .highlight {
       background-color: #ffd700 !important;
     }
+    footer {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 10px 20px;
+    }
+    .next-button {
+      background-color: #7C4B00;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .next-button:hover {
+      background-color: #0056b3;
+    }
   </style>
 </head>
-<body> 
+<body>
   <header>
-    <div class="timer" id="timer">Time: 00:00</div>
-    <button class="menu">Menu</button>
-    <button class="next">Next</button>
+    <span class="timer" id="timer">00:00</span>
+    <button class="menu-button">Menu</button>
   </header>
-  <div id="word-grid" class="grid"></div>
-  <div class="words">
-    <strong>Find these words:</strong> FOX, BIRD, RABBIT, BEAR, POMERNIAN, ELEPHANT, SWANS, SQUIRREL, SNAKE 
-  </div>
+  <main>
+    <h1></h1>
+    <div id="word-grid" class="grid"></div>
+    <div class="words">
+      <strong>Find these words:</strong> FOX, BIRD, RABBIT, BEAR, POMERNIAN, ELEPHANT, SWANS, SQUIRREL, SNAKE
+    </div>
+  </main>
+  <footer>
+    <button class="next-button">Next</button>
+  </footer>
 
   <script>
-    // คำศัพท์และขนาดของตาราง
-    const words = ["FOX", "BIRD", "RABBIT"];
+    const words = ["FOX", "BIRD", "RABBIT","BEAR", 'POMERNIAN', 'ELEPHANT', "SWANS", "SQUIRREL", "SNAKE"];
     const gridSize = 10;
+    
+    let seconds = 0;
+    const timerElement = document.getElementById("timer");
+    let timerInterval;
 
-    // สร้างตารางว่าง
-    const grid = Array.from({ length: gridSize }, () => Array(gridSize).fill(""));
+    const updateTimer = () => {
+      seconds++;
+      const mins = String(Math.floor(seconds / 60)).padStart(2, "0");
+      const secs = String(seconds % 60).padStart(2, "0");
+      timerElement.textContent = `Time: ${mins}:${secs}`;
+    };
 
-    // วางคำในตาราง
+    timerInterval = setInterval(updateTimer, 1000);
+
+    const foundWords = new Set();
+
+    const stopTimer = () => {
+        clearInterval(timerInterval);
+        alert(`Congratulations! You found all words in ${timerElement.textContent}`);
+    };
+
+    let selectedCells = []; // เก็บเซลล์ที่ถูกเลือก
+
+    const checkWordFound = () => {
+        const selectedWord = selectedCells.map(cell => cell.textContent).join('');
+        if (words.includes(selectedWord) && !foundWords.has(selectedWord)) {
+            foundWords.add(selectedWord);
+            console.log(`Found word: ${selectedWord}`);
+            if (foundWords.size === words.length) {
+                stopTimer(); // หยุดเวลาเมื่อพบครบทุกคำ
+            }
+        }
+    };
+
+    const grid = Array.from({ length: gridSize }, () =>
+      Array(gridSize).fill("")
+    );
+
     const placeWord = (word) => {
       let placed = false;
       while (!placed) {
@@ -164,7 +211,11 @@
             );
             placed = true;
           }
-        } else if (direction === "diagonal" && startRow + wordLength <= gridSize && startCol + wordLength <= gridSize) {
+        } else if (
+          direction === "diagonal" &&
+          startRow + wordLength <= gridSize &&
+          startCol + wordLength <= gridSize
+        ) {
           if (
             word.split("").every(
               (letter, index) =>
@@ -184,7 +235,6 @@
 
     words.forEach((word) => placeWord(word));
 
-    // เติมตัวอักษรสุ่มในช่องว่าง
     const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     grid.forEach((row, rowIndex) =>
       row.forEach((cell, colIndex) => {
@@ -196,31 +246,33 @@
       })
     );
 
-    // แสดงตาราง
     const gridContainer = document.getElementById("word-grid");
     gridContainer.style.gridTemplateColumns = `repeat(${gridSize}, 40px)`;
 
-    grid.forEach((row) => {
-      row.forEach((cell) => {
+    const handleCellClick = (cellDiv) => {
+      cellDiv.classList.toggle("highlight");
+      if (cellDiv.classList.contains("highlight")) {
+        selectedCells.push(cellDiv); // เก็บเซลล์เมื่อคลิก
+      } else {
+        selectedCells = selectedCells.filter(cell => cell !== cellDiv); // ลบเซลล์เมื่อยกเลิกการเลือก
+      }
+
+      // เมื่อเลือกครบคำแล้ว จะตรวจสอบ
+      if (selectedCells.length === words[0].length) { 
+        checkWordFound(); // ตรวจสอบคำที่เลือก
+      }
+    };
+
+    grid.forEach((row, rowIndex) => {
+      row.forEach((cell, colIndex) => {
         const cellDiv = document.createElement("div");
         cellDiv.textContent = cell;
-        cellDiv.addEventListener("click", () => {
-          cellDiv.classList.toggle("highlight");
-        });
+        cellDiv.dataset.row = rowIndex;
+        cellDiv.dataset.col = colIndex;
+        cellDiv.addEventListener("click", () => handleCellClick(cellDiv));
         gridContainer.appendChild(cellDiv);
       });
     });
-
-    // นาฬิกาจับเวลา
-    let seconds = 0;
-    const timerElement = document.getElementById("timer");
-
-    setInterval(() => {
-      seconds++;
-      const minutes = String(Math.floor(seconds / 60)).padStart(2, "0");
-      const secs = String(seconds % 60).padStart(2, "0");
-      timerElement.textContent = `Time: ${minutes}:${secs}`;
-    }, 1000);
   </script>
 </body>
 </html>
