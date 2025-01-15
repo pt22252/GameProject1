@@ -4,14 +4,17 @@ document.querySelectorAll('.option').forEach(button => {
         const feedback = document.querySelector('.feedback');
         const nextButton = document.getElementById('next-button');
 
+        // แสดงข้อความตอบกลับและเปลี่ยนพื้นหลัง
         if (isCorrect) {
             feedback.textContent = "ถูกต้อง! ไปหน้าถัดไป!";
             feedback.style.color = "green";
             nextButton.style.display = "block"; // แสดงปุ่ม Next
+            document.body.style.backgroundImage = "url('background/SolveProblems1.png')";
         } else {
             feedback.textContent = "แย่จัง! พี่หมีใช้สิ่งนี้ข้ามไปไม่ได้ ช่วยเลือกอีกครั้งนะ!";
             feedback.style.color = "red";
             nextButton.style.display = "none"; // ซ่อนปุ่ม Next
+            document.body.style.backgroundImage = "url('background/SolveProblems1.png')";
         }
     });
 });
