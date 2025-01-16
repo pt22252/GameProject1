@@ -4,21 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Word Search Game 2</title>
+    <title>Word Search Game 1</title>
     <style>
         body {
+            display: flex;
             font-family: Arial, sans-serif;
-            background-image: url('background/WordSearch1.png');
+            background-image: url('background/beargreen.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             color: rgb(0, 0, 0);
             text-align: center;
+            padding: 20px;
         }
 
         .grid {
             display: grid;
-            justify-content: center;
+            justify-content: right;
             margin: 20px auto;
             grid-template-columns: repeat(10, 45px);
         }
@@ -29,9 +31,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 1px solid #ccc;
             font-size: 30px;
-            background-color: rgb(255, 255, 255);
             cursor: pointer;
             user-select: none;
             position: relative;
@@ -39,16 +39,18 @@
 
         /* เส้นขอบโค้งมนแทนการเปลี่ยนสี */
         .highlight {
-    outline: 3px solid #00ce34; /* สีกรอบ */
-    outline-offset: -3px;
-    border-radius: 8px;
-    transition: outline-color 0.3s ease; /* เพิ่มการเปลี่ยนสีกรอบ */
-}
+            outline: 3px solid #00ce34;
+            /* สีกรอบ */
+            outline-offset: -3px;
+            border-radius: 8px;
+            transition: outline-color 0.3s ease;
+            /* เพิ่มการเปลี่ยนสีกรอบ */
+        }
 
         .words span {
             margin-right: 5px;
             font-size: 18px;
-            color: rgb(255, 255, 255);
+            color: rgb(0, 0, 0);
         }
 
         .words span.found {
@@ -59,26 +61,53 @@
         #timer {
             font-size: 18px;
             margin-top: 10px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            /* ขอบโค้งมน */
+            background-color: #ffffff00;
+            /* พื้นหลังสีอ่อน */
+            display: inline-block;
+            /* ให้กรอบขยายเท่ากับขนาดข้อความ */
+        }
+
+        #word-list {
+            height: 370px;
+            width: 370px;
+            /* ขนาดก้อนเมฆ */
+            margin-top: 0px;
+            /* ก้อนเมฆเลื่อนลง */
+            margin-left: 175px;
+            /* ก้อนเมฆเลื่อนซ้าย */
+            background-position: center;
+            line-height: 2;
+            background-repeat: no-repeat;
+            background-image: url(component/cloundgreen.png);
+            background-size: contain;
+            /* ปรับให้เห็นทั้งรูปแบบเต็ม */
+
         }
     </style>
 </head>
 
 <body>
+    <div class="words" id="word-list">
+        <div style="margin-top: 140px/*เลื่อนข้อความ*/;">
+            <span data-word="FOX">FOX</span>,
+            <span data-word="BIRD">BIRD</span>,
+            <span data-word="CRICKETS">CRICKETS</span>,
+            <br>
+            <span data-word="BEAR">BEAR</span>,
+            <span data-word="POMERNIAN">POMERNIAN</span>,
+            <span data-word="ELEPHANT">ELEPHANT</span>,
+            <br>
+            <span data-word="OWL">OWL</span>,
+            <span data-word="SQUIRREL">SQUIRREL</span>,
+            <span data-word="SNAKE">SNAKE</span>
+        </div>
 
-    <h1>Word Search Game</h1>
-    <div id="word-grid" class="grid"></div>
-    <div class="words" id="word-list"><strong>Find these words:</strong>
-        <span data-word="FOX">FOX</span>,
-        <span data-word="BIRD">BIRD</span>,
-        <span data-word="CRICKETS">CRICKETS</span>,
-        <span data-word="BEAR">BEAR</span>,
-        <span data-word="POMERNIAN">POMERNIAN</span>,
-        <span data-word="ELEPHANT">ELEPHANT</span>,
-        <span data-word="OWL">OWL</span>,
-        <span data-word="SQUIRREL">SQUIRREL</span>,
-        <span data-word="SNAKE">SNAKE</span>
     </div>
-    <div id="timer">Time: 00:00</div>
+    <div id="word-grid" class="grid" style="color: #000000;background-color: #ffffff;border-radius: 8px;"></div>
+    <div id="timer" style="height: fit-content;background-color: #7a3700;color: #ffffff;">Time: 00:00</div>
 
     <script>
         const words = ["FOX", "BIRD", "CRICKETS", "BEAR", "POMERNIAN", "ELEPHANT", "OWL", "SQUIRREL", "SNAKE"];
@@ -148,115 +177,115 @@
         const foundWords = new Set();
 
         const startSelection = (event) => {
-    if (event.target.textContent && !event.target.classList.contains("highlight")) {
-        isDragging = true;
-        selectedCells.push(event.target);
-        event.target.classList.add("highlight");
-    }
-};
+            if (event.target.textContent && !event.target.classList.contains("highlight")) {
+                isDragging = true;
+                selectedCells.push(event.target);
+                event.target.classList.add("highlight");
+            }
+        };
 
 
         const wordListElement = document.getElementById("word-list");
 
         const animalSounds = {
-        "FOX": new Audio("animalsound/fox.mp3"),
-        "BIRD": new Audio("animalsound/bird.mp3"),
-        "CRICKETS": new Audio("animalsound/crickets.mp3"),
-        "BEAR": new Audio("animalsound/bear.mp3"),
-        "POMERNIAN": new Audio("animalsound/pompom.mp3"),
-        "ELEPHANT": new Audio("animalsound/elephant.mp3"),
-        "OWL": new Audio("animalsound/owl.mp3"),
-        "SQUIRREL": new Audio("animalsound/squirrel.mp3"),
-        "SNAKE": new Audio("animalsound/snake.mp3")
-    };
+            "FOX": new Audio("animalsound/fox.mp3"),
+            "BIRD": new Audio("animalsound/bird.mp3"),
+            "CRICKETS": new Audio("animalsound/crickets.mp3"),
+            "BEAR": new Audio("animalsound/bear.mp3"),
+            "POMERNIAN": new Audio("animalsound/pompom.mp3"),
+            "ELEPHANT": new Audio("animalsound/elephant.mp3"),
+            "OWL": new Audio("animalsound/owl.mp3"),
+            "SQUIRREL": new Audio("animalsound/squirrel.mp3"),
+            "SNAKE": new Audio("animalsound/snake.mp3")
+        };
 
-    const markWordAsFound = (word) => {
-    const wordElements = wordListElement.querySelectorAll(`span[data-word="${word}"]`);
-    wordElements.forEach(element => element.classList.add("found"));
+        const markWordAsFound = (word) => {
+            const wordElements = wordListElement.querySelectorAll(`span[data-word="${word}"]`);
+            wordElements.forEach(element => element.classList.add("found"));
 
-    // หยุดเสียงทุกเสียงก่อนที่จะเล่นเสียงใหม่
-    Object.values(animalSounds).forEach(sound => sound.pause());
-    // เล่นเสียงเมื่อพบคำศัพท์ใหม่
-    if (animalSounds[word]) {
-        animalSounds[word].currentTime = 0; // รีเซ็ตเวลาเสียงให้เริ่มเล่นจากต้น
-        animalSounds[word].play();
-    }
-};
+            // หยุดเสียงทุกเสียงก่อนที่จะเล่นเสียงใหม่
+            Object.values(animalSounds).forEach(sound => sound.pause());
+            // เล่นเสียงเมื่อพบคำศัพท์ใหม่
+            if (animalSounds[word]) {
+                animalSounds[word].currentTime = 0; // รีเซ็ตเวลาเสียงให้เริ่มเล่นจากต้น
+                animalSounds[word].play();
+            }
+        };
 
 
-const continueSelection = (event) => {
-    if (isDragging && event.target.textContent && !selectedCells.includes(event.target) && !event.target.classList.contains("highlight")) {
-        selectedCells.push(event.target);
-        event.target.classList.add("highlight");
-    }
-};
+        const continueSelection = (event) => {
+            if (isDragging && event.target.textContent && !selectedCells.includes(event.target) && !event.target.classList.contains("highlight")) {
+                selectedCells.push(event.target);
+                event.target.classList.add("highlight");
+            }
+        };
 
-const stopSelection = () => {
-    if (isDragging) {
-        isDragging = false;
-        const selectedWord = selectedCells.map(cell => cell.textContent).join("");
+        const stopSelection = () => {
+            if (isDragging) {
+                isDragging = false;
+                const selectedWord = selectedCells.map(cell => cell.textContent).join("");
 
-        if (words.includes(selectedWord) && !foundWords.has(selectedWord)) {
-            foundWords.add(selectedWord);
+                if (words.includes(selectedWord) && !foundWords.has(selectedWord)) {
+                    foundWords.add(selectedWord);
 
-            // ปรับคลาสใหม่ให้กับคำที่พบ
-            markWordAsFound(selectedWord);
+                    // ปรับคลาสใหม่ให้กับคำที่พบ
+                    markWordAsFound(selectedWord);
 
-            // เคลียร์กรอบ "highlight-new" เมื่อคำถูกพบ
-            selectedCells.forEach(cell => {
-                if (cell.classList.contains("highlight-new")) {
-                    cell.classList.remove("highlight-new");
-                }
-            });
+                    // เคลียร์กรอบ "highlight-new" เมื่อคำถูกพบ
+                    selectedCells.forEach(cell => {
+                        if (cell.classList.contains("highlight-new")) {
+                            cell.classList.remove("highlight-new");
+                        }
+                    });
 
-            if (foundWords.size === words.length) {
-                clearInterval(timerInterval);
-                
-                // คำนวณเวลาที่เล่น
-                const timeTaken = seconds;
-                let starRating = 0;
+                    if (foundWords.size === words.length) {
+                        clearInterval(timerInterval);
 
-                // แสดงข้อความ popup
-                let message = "You complete the game!";
-                if (timeTaken >= 180) { // มากกว่าหรือเท่ากับ 3 นาที
-                    starRating = 1;
-                } else if (timeTaken <= 120) { // น้อยกว่าหรือเท่ากับ 2 นาที
-                    starRating = 2;
-                } else { // น้อยกว่า 2 นาที
-                    starRating = 3;
-                }
+                        // คำนวณเวลาที่เล่น
+                        const timeTaken = seconds;
+                        let starRating = 0;
 
-                message += `\nTime taken: ${Math.floor(timeTaken / 60)}:${String(timeTaken % 60).padStart(2, '0')}`;
-                message += `\nStars: ${starRating}⭐`;
+                        // แสดงข้อความ popup
+                        let message = "You complete the game!";
+                        if (timeTaken >= 180) { // มากกว่าหรือเท่ากับ 3 นาที
+                            starRating = 1;
+                        } else if (timeTaken <= 120) { // น้อยกว่าหรือเท่ากับ 2 นาที
+                            starRating = 2;
+                        } else { // น้อยกว่า 2 นาที
+                            starRating = 3;
+                        }
 
-                // แสดงป๊อปอัพ
-                const popup = document.createElement('div');
-                popup.style.position = 'fixed';
-                popup.style.top = '50%';
-                popup.style.left = '50%';
-                popup.style.transform = 'translate(-50%, -50%)';
-                popup.style.padding = '20px';
-                popup.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
-                popup.style.color = '#fff';
-                popup.style.borderRadius = '10px';
-                popup.style.textAlign = 'center';
-                popup.style.zIndex = '1000';
-                popup.innerHTML = `
+                        message += `\nTime taken: ${Math.floor(timeTaken / 60)}:${String(timeTaken % 60).padStart(2, '0')}`;
+                        message += `\nStars: ${starRating}⭐`;
+
+                        // แสดงป๊อปอัพ
+                        const popup = document.createElement('div');
+                        popup.style.position = 'fixed';
+                        popup.style.top = '50%';
+                        popup.style.left = '50%';
+                        popup.style.transform = 'translate(-50%, -50%)';
+                        popup.style.padding = '20px';
+                        popup.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+                        popup.style.color = '#fff';
+                        popup.style.borderRadius = '10px';
+                        popup.style.textAlign = 'center';
+                        popup.style.zIndex = '1000';
+                        popup.innerHTML = `
                     <p>${message}</p>
                     <button onclick="window.location.href='WordSearch2.html'">Next Page</button>
                 `;
-                document.body.appendChild(popup);
-            }
-        } else {
-            selectedCells.forEach(cell => {
-                if (!cell.classList.contains("found")) {
-                    cell.classList.remove("highlight");
+                        document.body.appendChild(popup);
+                    }
+                } else {
+                    selectedCells.forEach(cell => {
+                        if (!cell.classList.contains("found")) {
+                            cell.classList.remove("highlight");
+                        }
+                    });
                 }
-            });
-        }
-        selectedCells = [];
-    }
-};
+                selectedCells = [];
+            }
+        };
 
 
         gridContainer.addEventListener("mousedown", startSelection);
