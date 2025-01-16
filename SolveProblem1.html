@@ -6,22 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solve Problem Game</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('background/SolveProblems1.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
 </head>
 
 <body>
     <div class="game-container">
         <div class="question">
-            <p>พี่หมีอยากไปหาเพื่อนกวางฝั่งตรงข้าม น้อง ๆ ช่วยพาพี่หมีข้ามไปได้ไหม เอ๊ะ! พี่หมีควรใช้อะไรดี?</p>
+            <p>พี่หมีอยากไปหาเพื่อนกวางฝั่งตรงข้าม
+                น้อง ๆ ช่วยพาพี่หมีข้ามไปได้ไหม
+                เอ~ พี่หมีควรใช้อะไรดี?</p>
         </div>
         <div class="options">
             <div class="option-container">
-                <button class="option" data-correct="false">
+                <button class="option" data-correct="true">
                     <img src="component/Wood.png" alt="ท่อนไม้">
                 </button>
                 <button class="option" data-correct="false">
                     <img src="component/Flashlight.png" alt="ไฟฉาย">
                 </button>
-                <button class="option" data-correct="true">
+                <button class="option" data-correct="false">
                     <img src="component/carrot.png" alt="แครอท">
                 </button>
             </div>

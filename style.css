@@ -1,20 +1,31 @@
-body {
-  background-image: url('background/SolveProblems1.png'),url('background/SolveProblems2.png'),url('background/SolveProblems3.png');
+/* สำหรับ SolveProblem1.html */
+body.solved1 {
+  background-image: url('background/SolveProblems1.png');
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: 100% 100%;
-  font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
+  background-size: cover;
+}
+
+/* สำหรับ SolveProblem2.html */
+body.solved2 {
+  background-image: url('background/SolveProblems2.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+/* สำหรับ SolveProblem3.html */
+body.solved3 {
+  background-image: url('background/SolveProblems3.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 .game-container {
   text-align: center;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
   padding: 20px;
   width: 80%;
   max-width: 600px;
@@ -40,30 +51,33 @@ body {
 }
 
 .option img {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
+  width: 100px;  /* ขนาดที่ต้องการ */
+  height: 100px; /* ขนาดที่ต้องการ */
+  object-fit: contain; /* ให้รักษาสัดส่วนของรูปภาพ */
   border-radius: 5px;
 }
 
 .feedback {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
-  margin-top: 20px;
+  margin-top: 16px;
   color: #ff4500;
 }
 
 #next-button {
   margin-top: 20px;
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
   background-color: #4CAF50;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  display: none;
+  display: block;  /* เปลี่ยนจาก inline-block หรือ inline เป็น block */
+  margin-left: auto; /* จัดตำแหน่งด้านซ้าย */
+  margin-right: auto; /* จัดตำแหน่งด้านขวา */
+  width: fit-content; /* กำหนดขนาดความกว้างของปุ่มให้พอดีกับเนื้อหา */
 }
 
 #next-button:hover {
