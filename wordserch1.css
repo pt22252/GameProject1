@@ -1,0 +1,74 @@
+body {
+    display: flex;
+    font-family: Arial, sans-serif;
+    background-image: url('background/WordSearch1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+    margin: 0;
+    height: 100vh;
+}
+
+.grid {
+    display: grid;
+    margin-top: 25px;
+    border-radius: 10px;
+    margin-left: auto; /* ดันตารางไปทางขวา */
+    margin-right: 20px; /* เว้นระยะจากขอบขวาเล็กน้อย */
+    background-color: rgb(255, 255, 255);
+    grid-template-columns: repeat(10, 60px); /* เพิ่มขนาดช่อง */
+    height: 600px; /* เพิ่มความสูงของตาราง */
+    width: 600px;  /* เพิ่มความกว้างของตาราง */
+}
+
+.grid div {
+    width: 60px; /* ปรับขนาดช่อง */
+    height: 60px; /* ปรับขนาดช่อง */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px; /* ขยายตัวอักษรให้เหมาะกับขนาดช่อง */
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+}
+
+.highlight {
+    outline: 3px solid #00ce34;
+    outline-offset: -3px;
+    border-radius: 8px;
+    transition: outline-color 0.3s ease;
+}
+
+.words span {
+    margin-right: 5px;
+    font-size: 18px;
+    color: rgb(0, 0, 0);
+}
+
+.words span.found {
+    text-decoration: line-through;
+    color: #00ce34;
+}
+
+#timer {
+    font-size: 35px;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+#word-list {
+    height: 370px;
+    width: 370px;
+    margin-top: 180px;
+    margin-left: 650px;
+    background-position: center;
+    line-height: 2;
+    background-repeat: no-repeat;
+    background-image: url('component/cloundgreen.png');
+    background-size: contain;
+    transform: scale(1.8); /* ขยายภาพ 1.2 เท่า */
+}
