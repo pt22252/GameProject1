@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Word Search Game 2</title>
+    <title>Word Search Game 3</title>
     <style>
         body {
             display: flex;
             font-family: Arial, sans-serif;
-            background-image: url('background/WordSearch2.png');
+            background-image: url('background/WordSearch3.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -81,7 +81,7 @@
             background-position: center;
             line-height: 2;
             background-repeat: no-repeat;
-            background-image: url(component/cloundblue.png);
+            background-image: url(component/cloundpink.png);
             background-size: contain;
             /* ปรับให้เห็นทั้งรูปแบบเต็ม */
 
@@ -92,17 +92,17 @@
 <body>
     <div class="words" id="word-list">
         <div style="margin-top: 140px/*เลื่อนข้อความ*/;">
-            <span data-word="WHALE">WHALE</span>,
-            <span data-word="DOLPHIN">DOLPHIN</span>,
-            <span data-word="SHARK">SHARK</span>,
+            <span data-word="DEER">DEER</span>,
+            <span data-word="VULTURE">VULTURE</span>,
+            <span data-word="HORSE">HORSE</span>,
             <br>
-            <span data-word="GOLDFISH">GOLDFISH</span>,
-            <span data-word="WALRUS">WALRUS</span>,
-            <span data-word="CRAB">CRAB</span>,
+            <span data-word="RATTLE">RATTLE</span>,
+            <span data-word="HAWK">HAWK</span>,
+            <span data-word="ELEPHANT">ELEPHANT</span>,
             <br>
-            <span data-word="SEAL">SEAL</span>,
-            <span data-word="OCTOPUS">OCTOPUS</span>,
-            <span data-word="SNAIL">SNAIL</span>
+            <span data-word="LION">LION</span>,
+            <span data-word="HYENA">HYENA</span>,
+            <span data-word="LEOPARD">LEOPARD</span>
         </div>
 
     </div>
@@ -110,7 +110,7 @@
     <div id="timer" style="height: fit-content;background-color: #7a3700;color: #ffffff;">Time: 00:00</div>
 
     <script>
-        const words = ["WHALE", "DOLPHIN", "SHARK", "GOLDFISH", "WALRUS", "CRAB", "SEAL", "OCTOPUS", "SNAIL"];
+        const words = ["DEER", "VULTURE", "HORSE", "RATTLE", "HAWK", "ELEPHANT", "LION", "HYENA", "LEOPARD"];
         const gridSize = 10;
         let timerInterval;
         let seconds = 0;
@@ -188,15 +188,15 @@
         const wordListElement = document.getElementById("word-list");
 
         const animalSounds = {
-            "WHALE": new Audio("animalsound/whale.mp3"),
-            "DOLPHIN": new Audio("animalsound/dolphin.mp3"),
-            "SHARK": new Audio("animalsound/shark.mp3"),
-            "GOLDFISH": new Audio("animalsound/goldfish.mp3"),
-            "WALRUS": new Audio("animalsound/walrus.mp3"),
-            "CRAB": new Audio("animalsound/crab.mp3"),
-            "SEAL": new Audio("animalsound/seal.mp3"),
-            "OCTOPUS": new Audio("animalsound/octopus.mp3"),
-            "SNAIL": new Audio("animalsound/snail.mp3")
+            "DEER": new Audio("animalsound/deer.mp3"),
+            "VULTURE": new Audio("animalsound/vulture.mp3"),
+            "HORSE": new Audio("animalsound/horse.mp3"),
+            "RATTLE": new Audio("animalsound/RATTLE.mp3"),
+            "HAWK": new Audio("animalsound/hawk.mp3"),
+            "ELEPHANT": new Audio("animalsound/elephant3.mp3"),
+            "LION": new Audio("animalsound/lion.mp3"),
+            "HYENA": new Audio("animalsound/hyena.mp3"),
+            "LEOPARD": new Audio("animalsound/leopard.mp3")
         };
 
         const markWordAsFound = (word) => {
@@ -277,7 +277,7 @@
                         popup.style.zIndex = '1000';
                         popup.innerHTML = `
                             <p>${message}</p>
-                            <button onclick="window.location.href='WordSearch3.html'">Next Page</button>
+                            <button onclick="window.location.href='SolveProblem1.html'">Next Page</button>
                         `;
                         document.body.appendChild(popup);
                     }
