@@ -49,7 +49,7 @@ body {
 
 .words span.found {
     text-decoration: line-through;
-    color: #00ce34;
+    color: #ce0000;
 }
 
 #timer {
