@@ -1,4 +1,4 @@
-const words = ["FOX", "BIRD", "CRICKETS", "BEAR", "POMERNIAN", "COBRA", "OWL", "SQUIRREL", "SNAKE"];
+const words = ["WHALE", "DOLPHIN", "SHARK", "GOLDFISH", "WALRUS", "CRAB", "SEAL", "OCTOPUS", "SNAIL"];
 const gridSize = 10;
 let timerInterval;
 let seconds = 0;
@@ -75,15 +75,15 @@ const startSelection = (event) => {
 const wordListElement = document.getElementById("word-list");
 
 const animalSounds = {
-    "FOX": new Audio("animalsound/fox.mp3"),
-    "BIRD": new Audio("animalsound/bird.mp3"),
-    "CRICKETS": new Audio("animalsound/crickets.mp3"),
-    "BEAR": new Audio("animalsound/bear.mp3"),
-    "POMERNIAN": new Audio("animalsound/pompom.mp3"),
-    "COBRA": new Audio("animalsound/cobra.mp3"),
-    "OWL": new Audio("animalsound/owl.mp3"),
-    "SQUIRREL": new Audio("animalsound/squirrel.mp3"),
-    "SNAKE": new Audio("animalsound/snake.mp3")
+    "WHALE": new Audio("animalsound/whale.mp3"),
+    "DOLPHIN": new Audio("animalsound/dolphin.mp3"),
+    "SHARK": new Audio("animalsound/shark.mp3"),
+    "GOLDFISH": new Audio("animalsound/goldfish.mp3"),
+    "WALRUS": new Audio("animalsound/walrus.mp3"),
+    "CRAB": new Audio("animalsound/crab.mp3"),
+    "SEAL": new Audio("animalsound/seal.mp3"),
+    "OCTOPUS": new Audio("animalsound/octopus.mp3"),
+    "SNAIL": new Audio("animalsound/snail.mp3")
 };
 
 const markWordAsFound = (word) => {
@@ -152,7 +152,7 @@ const stopSelection = () => {
                 popup.style.zIndex = '1000';
                 popup.innerHTML = `
                     <p>${message}</p>
-                    <button onclick="window.location.href='WordSearch2.html'">Next Page</button>
+                    <button onclick="window.location.href='WordSearch3.html'">Next Page</button>
                 `;
                 document.body.appendChild(popup);
             }

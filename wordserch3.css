@@ -1,7 +1,7 @@
 body {
     display: flex;
     font-family: Arial, sans-serif;
-    background-image: url('background/WordSearch1.png');
+    background-image: url('background/WordSearch3.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -71,7 +71,7 @@ body {
     background-position: center;
     line-height: 2;
     background-repeat: no-repeat;
-    background-image: url('component/cloundgreen.png');
+    background-image: url('component/cloundpink.png');
     background-size: contain;
-    transform: scale(2.4); /* ขยายภาพ 1.2 เท่า */
+    transform: scale(1.8); /* ขยายภาพ 1.2 เท่า */
 }
