@@ -12,7 +12,7 @@ body {
 
 .grid {
     display: grid;
-    margin-top: 25px;
+    margin-top: 118px;
     border-radius: 10px;
     margin-left: auto; /* ดันตารางไปทางขวา */
     margin-right: 20px; /* เว้นระยะจากขอบขวาเล็กน้อย */
@@ -55,6 +55,7 @@ body {
 #timer {
     font-size: 35px;
     margin-top: 10px;
+    margin-left: 10px;
     padding: 10px;
     border-radius: 5px;
     display: inline-block;

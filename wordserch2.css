@@ -18,8 +18,8 @@ body {
     background-color: rgb(255, 255, 255);
     background-size: auto;
     grid-template-columns: repeat(10, 60px); /* เพิ่มขนาดช่อง */
-    height: 480px; /* เพิ่มความสูงของตาราง */
-    width: 480px;  /* เพิ่มความกว้างของตาราง */
+    height: 600px; /* เพิ่มความสูงของตาราง */
+    width: 600px;  /* เพิ่มความกว้างของตาราง */
 }
 
 .grid div {
@@ -55,6 +55,7 @@ body {
 #timer {
     font-size: 27px;
     margin-top: 10px;
+    margin-left: 10px;
     padding: 10px;
     border-radius: 5px;
     display: inline-block;
@@ -75,3 +76,13 @@ body {
     background-size: contain;
     transform: scale(1.8); /* ขยายภาพ 1.2 เท่า */
 }
+
+.grid-container {
+    justify-content: baseline; /* จัดตารางให้อยู่กลาง */
+    margin-left: 310px;
+    margin-top: 0;
+    top: 0;
+    transform: scale(0.8); /* ลดขนาดของตารางให้เล็กลง (80% ของขนาดเดิม) */
+    transform-origin: right; /* ตั้งค่าจุดยึดการย่อให้เป็นจุดศูนย์กลาง */
+}
+
