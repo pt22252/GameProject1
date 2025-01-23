@@ -137,7 +137,9 @@ const stopSelection = () => {
                     stars = '⭐';
                 }
 
-                let message = `You complete the game!\nTime taken: ${Math.floor(timeTaken / 60)}:${String(timeTaken % 60).padStart(2, '0')}\nStars: ${stars}`;
+                let message = `เก่งมากผ่านด่านแล้ว!<br>
+ใช้เวลาไป: ${Math.floor(timeTaken / 60)}:${String(timeTaken % 60).padStart(2, '0')} นาที<br>
+จำนวนดาว!: ${stars}`;
 
                 const popup = document.createElement('div');
                 popup.style.position = 'fixed';
@@ -151,9 +153,9 @@ const stopSelection = () => {
                 popup.style.textAlign = 'center';
                 popup.style.zIndex = '1000';
                 popup.innerHTML = `
-                    <p>${message}</p>
-                    <button onclick="window.location.href='WordSearch2.html'">Next Page</button>
-                `;
+    <p>${message}</p>
+    <button onclick="window.location.href='WordSearch2.html'">Next Page</button>
+`;
                 document.body.appendChild(popup);
             }
         } else {
@@ -170,3 +172,53 @@ const stopSelection = () => {
 gridContainer.addEventListener("mousedown", startSelection);
 gridContainer.addEventListener("mousemove", continueSelection);
 document.addEventListener("mouseup", stopSelection);
+
+
+
+
+////////////////////////////////////////////ตัวเทสpopup//////////////////////////////////////////////////////
+// ฟังก์ชันสำหรับสร้าง Popup
+const showPopup = (timeTaken, stars) => {
+    let message = `เก่งมากผ่านด่านแล้ว!<br>
+    ใช้เวลาไป: ${Math.floor(timeTaken / 60)}:${String(timeTaken % 60).padStart(2, '0')} นาที<br>
+    จำนวนดาว!: ${stars}`;
+
+    const popup = document.createElement('div');
+    popup.style.position = 'fixed';
+    popup.style.top = '50%';
+    popup.style.left = '50%';
+    popup.style.transform = 'translate(-50%, -50%)';
+    popup.style.padding = '20px';
+    popup.style.backgroundColor = '#000000';
+    popup.style.color = '#fff';
+    popup.style.borderRadius = '10px';
+    popup.style.textAlign = 'center';
+    popup.style.zIndex = '1000';
+    popup.innerHTML = `
+        <p>${message}</p>
+        <button onclick="window.location.href='WordSearch2.html'">Next Page</button>
+        <button onclick="this.parentElement.remove()">Close</button>
+    `;
+    document.body.appendChild(popup);
+};
+
+// เพิ่มปุ่มทดสอบในหน้า
+const testButton = document.createElement('button');
+testButton.textContent = 'Test Popup';
+testButton.style.position = 'fixed';
+testButton.style.top = '10px';
+testButton.style.right = '10px';
+testButton.style.padding = '10px';
+testButton.style.backgroundColor = '#28a745';
+testButton.style.color = '#fff';
+testButton.style.border = 'none';
+testButton.style.borderRadius = '5px';
+testButton.style.cursor = 'pointer';
+document.body.appendChild(testButton);
+
+// เมื่อคลิกปุ่มทดสอบ ให้เรียกฟังก์ชัน showPopup
+testButton.addEventListener('click', () => {
+    const timeTaken = 123; // เวลาในวินาที (ตัวอย่าง)
+    let stars = '⭐⭐⭐'; // จำนวนดาว (ตัวอย่าง)
+    showPopup(timeTaken, stars);
+});
