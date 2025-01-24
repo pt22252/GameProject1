@@ -154,7 +154,7 @@ const stopSelection = () => {
                 popup.style.zIndex = '1000';
                 popup.innerHTML = `
     <p>${message}</p>
-    <button onclick="window.location.href='WordSearch2.html'">Next Page</button>
+    <button onclick="window.location.href='WordSearch2.html'">ผจญภัยกันต่อ!!</button>
 `;
                 document.body.appendChild(popup);
             }
