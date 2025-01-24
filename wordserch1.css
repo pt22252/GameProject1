@@ -14,7 +14,9 @@ body {
     display: grid;
     margin-top: 118px;
     border-radius: 10px;
-    margin-left: auto; /* ดันตารางไปทางขวา */
+    justify-content: center; /* จัดกึ่งกลางแนวนอน */
+    align-content: center;  /* จัดกึ่งกลางแนวตั้ง */
+    margin: 118px auto 0 auto; /* ตั้งระยะห่างบน และทำให้ตารางอยู่ตรงกลาง */
     margin-right: 20px; /* เว้นระยะจากขอบขวาเล็กน้อย */
     background-color: rgb(255, 255, 255);
     grid-template-columns: repeat(10, 60px); /* เพิ่มขนาดช่อง */
@@ -39,6 +41,8 @@ body {
     outline-offset: -3px;
     border-radius: 8px;
     transition: outline-color 0.3s ease;
+    /* Fallback เผื่อ transition ไม่ทำงาน */
+    outline-color: #00ce34;
 }
 
 .words span {
@@ -56,6 +60,7 @@ body {
     font-size: 35px;
     margin-top: 10px;
     margin-left: 10px;
+    margin-right: 10px;
     padding: 10px;
     border-radius: 5px;
     display: inline-block;
@@ -65,14 +70,21 @@ body {
 }
 
 #word-list {
-    height: 370px;
+    height: 250px;
     width: 370px;
-    margin-top: 180px;
-    margin-left: 650px;
+    margin-top: 0px;
+    margin-left: 350px;
     background-position: center;
     line-height: 2;
     background-repeat: no-repeat;
     background-image: url('component/cloundgreen.png');
     background-size: contain;
-    transform: scale(2.4); /* ขยายภาพ 1.2 เท่า */
+    transform: scale(2.0); /* ขยายภาพ 1.2 เท่า */
+    transform-origin: top center; /* กำหนดจุดเริ่มต้นของการขยายให้ชัดเจน */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }

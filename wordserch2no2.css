@@ -1,7 +1,7 @@
 body {
     display: flex;
     font-family: Arial, sans-serif;
-    background-image: url('background/WordSearch2.png');
+    background-image: url('background/WordSearch1.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -67,12 +67,12 @@ body {
 #word-list {
     height: 370px;
     width: 370px;
-    margin-top: 180px;
-    margin-left: 650px;
+    margin-top: 80px;
+    margin-left: 350px;
     background-position: center;
     line-height: 2;
     background-repeat: no-repeat;
-    background-image: url('component/cloundblue.png');
+    background-image: url('component/cloundgreen.png');
     background-size: contain;
-    transform: scale(2.4); /* ขยายภาพ 1.2 เท่า */
+    transform: scale(2.0); /* ขยายภาพ 1.2 เท่า */
 }
