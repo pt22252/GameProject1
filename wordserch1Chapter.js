@@ -1,4 +1,4 @@
-const words = ["DEER", "VULTURE", "HORSE", "ELEPHANT", "HAWK", "KANGAROO", "LION", "HYENA", "LEOPARD"];
+const words = ["FOX", "BIRD", "CRICKETS", "BEAR", "POMERNIAN", "COBRA", "OWL", "SQUIRREL", "SNAKE"];
 const gridSize = 10;
 let timerInterval;
 let seconds = 0;
@@ -75,15 +75,15 @@ const startSelection = (event) => {
 const wordListElement = document.getElementById("word-list");
 
 const animalSounds = {
-    "DEER": new Audio("animalsound/deer.mp3"),
-    "VULTURE": new Audio("animalsound/vulture.mp3"),
-    "HORSE": new Audio("animalsound/horse.mp3"),
-    "ELEPHANT": new Audio("animalsound/elephant.mp3"),
-    "HAWK": new Audio("animalsound/hawk.mp3"),
-    "KANGAROO": new Audio("animalsound/kangaroo.mp3"),
-    "LION": new Audio("animalsound/lion.mp3"),
-    "HYENA": new Audio("animalsound/hyena.mp3"),
-    "LEOPARD": new Audio("animalsound/leopard.mp3")
+    "FOX": new Audio("animalsound/fox.mp3"),
+    "BIRD": new Audio("animalsound/bird.mp3"),
+    "CRICKETS": new Audio("animalsound/crickets.mp3"),
+    "BEAR": new Audio("animalsound/bear.mp3"),
+    "POMERNIAN": new Audio("animalsound/pompom.mp3"),
+    "COBRA": new Audio("animalsound/cobra.mp3"),
+    "OWL": new Audio("animalsound/owl.mp3"),
+    "SQUIRREL": new Audio("animalsound/squirrel.mp3"),
+    "SNAKE": new Audio("animalsound/snake.mp3")
 };
 
 const markWordAsFound = (word) => {
@@ -167,7 +167,7 @@ const stopSelection = () => {
     </div>
     <div style="display: flex; gap: 10px;">
         <button style="padding: 10px 20px; font-size: 25px; border: none; border-radius: 5px; background-color: #fff; color: #962727; cursor: pointer;"
-            onclick="window.location.href='Chapter.html'">จบเกมแล้วนะจ๊ะ</button>
+            onclick="window.location.href='WordSearch02Chapter.html'">ผจญภัยกันต่อ!!</button>
     </div>
 `;
                 document.body.appendChild(popup);
@@ -186,3 +186,67 @@ const stopSelection = () => {
 gridContainer.addEventListener("mousedown", startSelection);
 gridContainer.addEventListener("mousemove", continueSelection);
 document.addEventListener("mouseup", stopSelection);
+
+
+
+
+////////////////////////////////////////////ตัวเทสpopup//////////////////////////////////////////////////////
+// ฟังก์ชันสำหรับสร้าง Popup
+const showPopup = (timeTaken, stars) => {
+    let message = `เก่งมากผ่านด่านแล้ว!<br>
+    ใช้เวลาไป: ${Math.floor(timeTaken / 60)}:${String(timeTaken % 60).padStart(2, '0')} นาที<br>
+    จำนวนดาว!: ${stars}`;
+
+    const popup = document.createElement('div');
+    popup.style.position = 'fixed';
+    popup.style.top = '50%';
+    popup.style.left = '50%';
+    popup.style.fontSize = '20pt';
+    popup.style.width = '400px';
+    popup.style.height = '300px';
+    popup.style.transform = 'translate(-50%, -50%)';
+    popup.style.padding = '10px';
+    popup.style.backgroundColor = '#886E58';
+    popup.style.color = '#fff';
+    popup.style.borderRadius = '10px';
+    popup.style.display = 'flex'; // ใช้ flexbox
+    popup.style.flexDirection = 'column'; // จัดเรียงเป็นแนวตั้ง
+    popup.style.justifyContent = 'space-between'; // กระจายช่องว่างระหว่างข้อความและปุ่ม
+    popup.style.alignItems = 'center'; // จัดตำแหน่งกลางในแนวนอน
+    popup.style.textAlign = 'center';
+    popup.style.zIndex = '1000';
+    popup.style.opacity = '0.9'; // ความโปร่งใสของ popup
+
+    popup.innerHTML = `
+        <div style="flex-grow: 1; display: flex; align-items: center; justify-content: center;">
+            <p>${message}</p>
+        </div>
+        <div style="display: flex; gap: 10px;">
+            <button style="padding: 10px 20px; font-size: 25px; border: none; border-radius: 5px; background-color: #fff; color: #962727; cursor: pointer;"
+                onclick="window.location.href='WordSearch02.html'">ผจญภัยกันต่อ!!</button>
+        </div>
+    `;
+
+    document.body.appendChild(popup);
+};
+
+// เพิ่มปุ่มทดสอบในหน้า
+const testButton = document.createElement('button');
+testButton.textContent = 'Test Popup';
+testButton.style.position = 'fixed';
+testButton.style.top = '10px';
+testButton.style.right = '10px';
+testButton.style.padding = '10px';
+testButton.style.backgroundColor = '#28a745';
+testButton.style.color = '#fff';
+testButton.style.border = 'none';
+testButton.style.borderRadius = '5px';
+testButton.style.cursor = 'pointer';
+//document.body.appendChild(testButton);
+
+// เมื่อคลิกปุ่มทดสอบ ให้เรียกฟังก์ชัน showPopup
+testButton.addEventListener('click', () => {
+    const timeTaken = 123; // เวลาในวินาที (ตัวอย่าง)
+    let stars = '⭐⭐⭐'; // จำนวนดาว (ตัวอย่าง)
+    showPopup(timeTaken, stars);
+});

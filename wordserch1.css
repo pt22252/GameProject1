@@ -12,12 +12,7 @@ body {
 
 .grid {
     display: grid;
-    margin-top: 118px;
     border-radius: 10px;
-    justify-content: center; /* จัดกึ่งกลางแนวนอน */
-    align-content: center;  /* จัดกึ่งกลางแนวตั้ง */
-    margin: 118px auto 0 auto; /* ตั้งระยะห่างบน และทำให้ตารางอยู่ตรงกลาง */
-    margin-right: 20px; /* เว้นระยะจากขอบขวาเล็กน้อย */
     background-color: rgb(255, 255, 255);
     grid-template-columns: repeat(10, 60px); /* เพิ่มขนาดช่อง */
     height: 600px; /* เพิ่มความสูงของตาราง */
@@ -41,13 +36,11 @@ body {
     outline-offset: -3px;
     border-radius: 8px;
     transition: outline-color 0.3s ease;
-    /* Fallback เผื่อ transition ไม่ทำงาน */
-    outline-color: #00ce34;
 }
 
 .words span {
     margin-right: 5px;
-    font-size: 18px;
+    font-size: 16px;
     color: rgb(0, 0, 0);
 }
 
@@ -57,34 +50,39 @@ body {
 }
 
 #timer {
-    font-size: 35px;
-    margin-top: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-    padding: 10px;
+    font-size: 25px;
+    margin: 10px;
     border-radius: 5px;
-    display: inline-block;
+    display: inline-block; /* ทำให้ตัวนับอยู่ในบรรทัดเดียว */
     color: #ffffff;
     background-color: #7a3700;
     height: fit-content;
+    white-space: nowrap; /* บังคับไม่ให้ข้อความขึ้นบรรทัดใหม่ */
+    padding: 10px 15px; /* เพิ่มระยะห่างภายในเพื่อความสวยงาม */
+    text-align: center; /* จัดข้อความให้อยู่กลาง */
 }
 
 #word-list {
-    height: 250px;
+    height: 370px;
     width: 370px;
-    margin-top: 0px;
-    margin-left: 350px;
-    background-position: center;
+    margin-left: auto; /* จัดตำแหน่งให้อยู่กลางในกรณีปกติ */
+    margin-right: auto; /* จัดตำแหน่งให้อยู่กลางในกรณีปกติ */
+    position: relative; /* ใช้สำหรับการเลื่อน */
+    top: 100px;
+    left: 240px; /* เลื่อน cloundblue ไปทางขวา 50px */
     line-height: 2;
     background-repeat: no-repeat;
     background-image: url('component/cloundgreen.png');
     background-size: contain;
-    transform: scale(2.0); /* ขยายภาพ 1.2 เท่า */
-    transform-origin: top center; /* กำหนดจุดเริ่มต้นของการขยายให้ชัดเจน */
+    transform: scale(1.5); /* ปรับขนาดให้เหมาะสม */
+    text-align: center; /* จัดข้อความให้อยู่กลาง */
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+.grid-container {
+    justify-content: right; /* จัดตารางให้อยู่กลาง */
+    padding-left: 310px;
+    margin-top: 0;
+    margin-left: 0; /* ปรับให้เข้ากึ่งกลาง */
+    top: 0;
+    transform: scale(0.8); /* ลดขนาดของตารางให้เล็กลง (80% ของขนาดเดิม) */
 }
