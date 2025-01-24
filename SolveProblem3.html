@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solve Problem Game</title>
     <link rel="stylesheet" href="style.css">
+    <!-- เชื่อมต่อ Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
     <style>
         body {
             margin: 0;
@@ -14,9 +20,13 @@
             justify-content: center;
             align-items: center;
             background-image: url('background/SolveProblems3.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            font-family: "Mali", serif;
+            color: #333333;
         }
     </style>
 </head>
@@ -24,19 +34,20 @@
 <body>
     <div class="game-container">
         <div class="question">
-            <p>น้องแกะอยากช่วยพี่กระต่ายเก็บแครอท ช่วยน้องแกะเลือกอุปกรณ์ในการเก็บแครอทหน่อยได้ไหม เอ~
-                น้องแกะควรใช้อะไรดี?</p>
+            <p>น้องแกะอยากช่วยพี่กระต่ายเก็บแครอท <br>
+                ช่วยน้องแกะเลือกอุปกรณ์ในการใส่แครอทหน่อยได้ไหม <br>
+                เอ~ น้องแกะควรใช้อะไรดี?</p>
         </div>
         <div class="options">
             <div class="option-container">
                 <button class="option" data-correct="false">
-                    <img src="component/WateringCan.png" alt="บัวรดน้ำ">
+                    <img src="component\WateringCan1.png" alt="บัวรดน้ำ">
                 </button>
                 <button class="option" data-correct="true">
-                    <img src="component/Basket.png" alt="ตะกร้า">
+                    <img src="component\Basket1.png" alt="ตะกร้า">
                 </button>
                 <button class="option" data-correct="false">
-                    <img src="component/Scissors.png" alt="กรรไกร">
+                    <img src="component\Scissors1.png" alt="กรรไกร">
                 </button>
             </div>
         </div>

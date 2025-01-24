@@ -51,8 +51,8 @@ body.solved3 {
 }
 
 .option img {
-  width: 100px;  /* ขนาดที่ต้องการ */
-  height: 100px; /* ขนาดที่ต้องการ */
+  width: 140px;  /* ขนาดที่ต้องการ */
+  height: 140px; /* ขนาดที่ต้องการ */
   object-fit: contain; /* ให้รักษาสัดส่วนของรูปภาพ */
   border-radius: 5px;
 }
@@ -82,4 +82,75 @@ body.solved3 {
 
 #next-button:hover {
   background-color: #45a049;
+}
+.mali-extralight {
+  font-family: "Mali", serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.mali-light {
+  font-family: "Mali", serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.mali-regular {
+  font-family: "Mali", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.mali-medium {
+  font-family: "Mali", serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.mali-semibold {
+  font-family: "Mali", serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.mali-bold {
+  font-family: "Mali", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.mali-extralight-italic {
+  font-family: "Mali", serif;
+  font-weight: 200;
+  font-style: italic;
+}
+
+.mali-light-italic {
+  font-family: "Mali", serif;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.mali-regular-italic {
+  font-family: "Mali", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.mali-medium-italic {
+  font-family: "Mali", serif;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.mali-semibold-italic {
+  font-family: "Mali", serif;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.mali-bold-italic {
+  font-family: "Mali", serif;
+  font-weight: 700;
+  font-style: italic;
 }

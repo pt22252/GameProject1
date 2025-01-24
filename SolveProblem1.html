@@ -6,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solve Problem Game</title>
     <link rel="stylesheet" href="style.css">
+
+    <!-- เชื่อมต่อ Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
     <style>
         body {
             margin: 0;
@@ -14,9 +21,13 @@
             justify-content: center;
             align-items: center;
             background-image: url('background/SolveProblems1.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            font-family: "Mali", serif;
+            color: #333333;
         }
     </style>
 </head>
@@ -24,20 +35,20 @@
 <body>
     <div class="game-container">
         <div class="question">
-            <p>พี่หมีอยากไปหาเพื่อนกวางฝั่งตรงข้าม
-                น้อง ๆ ช่วยพาพี่หมีข้ามไปได้ไหม
+            <p>พี่หมีอยากไปหาเพื่อนกวางฝั่งตรงข้าม <br>
+                ช่วยพาพี่หมีข้ามไปได้ไหม <br>
                 เอ~ พี่หมีควรใช้อะไรดี?</p>
         </div>
         <div class="options">
             <div class="option-container">
                 <button class="option" data-correct="true">
-                    <img src="component/Wood.png" alt="ท่อนไม้">
+                    <img src="component\Wood1.png" alt="ท่อนไม้">
                 </button>
                 <button class="option" data-correct="false">
-                    <img src="component/Flashlight.png" alt="ไฟฉาย">
+                    <img src="component\Flashlight1.png" alt="ไฟฉาย">
                 </button>
                 <button class="option" data-correct="false">
-                    <img src="component/carrot.png" alt="แครอท">
+                    <img src="component\Carrot1.png" alt="แครอท">
                 </button>
             </div>
         </div>
@@ -45,6 +56,9 @@
         <button id="next-button" style="display: none;">Next</button>
     </div>
     <script src="script.js"></script>
+
+
+
 </body>
 
 </html>

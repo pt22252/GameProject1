@@ -5,25 +5,45 @@ document.querySelectorAll('.option').forEach(button => {
         const nextButton = document.getElementById('next-button');
         const currentUrl = window.location.pathname; // ตรวจสอบ URL ปัจจุบัน
 
+
+        // เพิ่มการอ้างอิงเสียง
+        const applauseSound = new Audio('reactionsounds/applause.mp3'); // เสียงเมื่อถูก
+        const booSound = new Audio('reactionsounds/boo.mp3'); // เสียงเมื่อผิด
+
+        // หยุดเสียงก่อนหน้า (หากกำลังเล่นอยู่)
+        applauseSound.pause();
+        applauseSound.currentTime = 0;
+        booSound.pause();
+        booSound.currentTime = 0;
+
+
+        // ปิดการคลิกตัวเลือกทั้งหมด
+        const allOptions = document.querySelectorAll('.option');
+        allOptions.forEach(option => option.disabled = true);
+
+
         // แสดงข้อความตอบกลับและควบคุมปุ่ม Next
         if (isCorrect) {
-            // ตรวจสอบว่าอยู่ในหน้าไหน
+            console.log("ตอบถูก!");
             if (currentUrl.includes('SolveProblem3.html')) {
                 feedback.textContent = "ยินดีด้วย! หนูๆ เก่งมาก!";
             } else {
                 feedback.textContent = "ยินดีด้วย! ไปหน้าถัดไป!";
             }
             feedback.style.color = "green";
+            applauseSound.play(); // เล่นเสียง applause.mp3
             nextButton.style.display = "block"; // แสดงปุ่ม Next
         } else {
+            console.log("ตอบผิด!");
             feedback.textContent = "แย่จัง! ช่วยเลือกอีกครั้งนะ!";
             feedback.style.color = "red";
+            booSound.play(); // เล่นเสียง boo.mp3
             nextButton.style.display = "none"; // ซ่อนปุ่ม Next
 
-            // รีเซ็ตหน้าเมื่อเลือกผิด
+            // ดีเลย์การรีโหลดหน้า
             setTimeout(() => {
                 location.reload(); // รีโหลดหน้าปัจจุบัน
-            }, 1500); // ดีเลย์ 1 วินาทีเพื่อให้ข้อความ "แย่จัง!" แสดงก่อน
+            }, 2000); // ดีเลย์ 2 วินาที
         }
     });
 });
@@ -41,3 +61,4 @@ document.getElementById('next-button').addEventListener('click', () => {
         window.location.href = "Home.html";
     }
 });
+
