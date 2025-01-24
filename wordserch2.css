@@ -54,12 +54,15 @@ body {
 
 #timer {
     font-size: 25px;
-    margin-top: 10px;
+    margin: 10px;
     border-radius: 5px;
-    display: inline-block;
+    display: inline-block; /* ทำให้ตัวนับอยู่ในบรรทัดเดียว */
     color: #ffffff;
     background-color: #7a3700;
     height: fit-content;
+    white-space: nowrap; /* บังคับไม่ให้ข้อความขึ้นบรรทัดใหม่ */
+    padding: 10px 15px; /* เพิ่มระยะห่างภายในเพื่อความสวยงาม */
+    text-align: center; /* จัดข้อความให้อยู่กลาง */
 }
 
 #word-list {
