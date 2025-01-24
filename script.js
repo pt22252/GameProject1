@@ -58,7 +58,7 @@ document.getElementById('next-button').addEventListener('click', () => {
         window.location.href = "SolveProblem3.html";
     } else if (currentUrl.includes('SolveProblem3.html')) {
         // เมื่อถึงหน้า SolveProblem3.html แล้วให้กลับไปที่หน้า Home.html
-        window.location.href = "Home.html";
+        window.location.href = "EndGame.html";
     }
 });
 
