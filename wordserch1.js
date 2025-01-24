@@ -145,16 +145,30 @@ const stopSelection = () => {
                 popup.style.position = 'fixed';
                 popup.style.top = '50%';
                 popup.style.left = '50%';
+                popup.style.fontSize = '20pt';
+                popup.style.width = '400px';
+                popup.style.height = '300px';
                 popup.style.transform = 'translate(-50%, -50%)';
-                popup.style.padding = '20px';
-                popup.style.backgroundColor = '#000000';
+                popup.style.padding = '10px';
+                popup.style.backgroundColor = '#886E58';
                 popup.style.color = '#fff';
                 popup.style.borderRadius = '10px';
+                popup.style.display = 'flex'; // ใช้ flexbox
+                popup.style.flexDirection = 'column'; // จัดเรียงเป็นแนวตั้ง
+                popup.style.justifyContent = 'space-between'; // กระจายช่องว่างระหว่างข้อความและปุ่ม
+                popup.style.alignItems = 'center'; // จัดตำแหน่งกลางในแนวนอน
                 popup.style.textAlign = 'center';
                 popup.style.zIndex = '1000';
+                popup.style.opacity = '0.9'; // ความโปร่งใสของ popup
+
                 popup.innerHTML = `
-    <p>${message}</p>
-    <button onclick="window.location.href='WordSearch2.html'">ผจญภัยกันต่อ!!</button>
+    <div style="flex-grow: 1; display: flex; align-items: center; justify-content: center;">
+        <p>${message}</p>
+    </div>
+    <div style="display: flex; gap: 10px;">
+        <button style="padding: 10px 20px; font-size: 25px; border: none; border-radius: 5px; background-color: #fff; color: #962727; cursor: pointer;"
+            onclick="window.location.href='WordSearch02.html'">ผจญภัยกันต่อ!!</button>
+    </div>
 `;
                 document.body.appendChild(popup);
             }
@@ -187,18 +201,32 @@ const showPopup = (timeTaken, stars) => {
     popup.style.position = 'fixed';
     popup.style.top = '50%';
     popup.style.left = '50%';
+    popup.style.fontSize = '20pt';
+    popup.style.width = '400px';
+    popup.style.height = '300px';
     popup.style.transform = 'translate(-50%, -50%)';
-    popup.style.padding = '20px';
-    popup.style.backgroundColor = '#000000';
+    popup.style.padding = '10px';
+    popup.style.backgroundColor = '#886E58';
     popup.style.color = '#fff';
     popup.style.borderRadius = '10px';
+    popup.style.display = 'flex'; // ใช้ flexbox
+    popup.style.flexDirection = 'column'; // จัดเรียงเป็นแนวตั้ง
+    popup.style.justifyContent = 'space-between'; // กระจายช่องว่างระหว่างข้อความและปุ่ม
+    popup.style.alignItems = 'center'; // จัดตำแหน่งกลางในแนวนอน
     popup.style.textAlign = 'center';
     popup.style.zIndex = '1000';
+    popup.style.opacity = '0.9'; // ความโปร่งใสของ popup
+
     popup.innerHTML = `
-        <p>${message}</p>
-        <button onclick="window.location.href='WordSearch2.html'">Next Page</button>
-        <button onclick="this.parentElement.remove()">Close</button>
+        <div style="flex-grow: 1; display: flex; align-items: center; justify-content: center;">
+            <p>${message}</p>
+        </div>
+        <div style="display: flex; gap: 10px;">
+            <button style="padding: 10px 20px; font-size: 25px; border: none; border-radius: 5px; background-color: #fff; color: #962727; cursor: pointer;"
+                onclick="window.location.href='WordSearch02.html'">ผจญภัยกันต่อ!!</button>
+        </div>
     `;
+
     document.body.appendChild(popup);
 };
 
@@ -214,7 +242,7 @@ testButton.style.color = '#fff';
 testButton.style.border = 'none';
 testButton.style.borderRadius = '5px';
 testButton.style.cursor = 'pointer';
-document.body.appendChild(testButton);
+//document.body.appendChild(testButton);
 
 // เมื่อคลิกปุ่มทดสอบ ให้เรียกฟังก์ชัน showPopup
 testButton.addEventListener('click', () => {

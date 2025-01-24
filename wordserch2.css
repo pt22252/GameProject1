@@ -12,10 +12,7 @@ body {
 
 .grid {
     display: grid;
-    margin-top: 90px;
     border-radius: 10px;
-    margin-left: 105px; /* ดันตารางไปทางขวา */
-    margin-right: 20px; /* เว้นระยะจากขอบขวาเล็กน้อย */
     background-color: rgb(255, 255, 255);
     grid-template-columns: repeat(10, 60px); /* เพิ่มขนาดช่อง */
     height: 600px; /* เพิ่มความสูงของตาราง */

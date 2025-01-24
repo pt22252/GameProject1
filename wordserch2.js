@@ -137,23 +137,39 @@ const stopSelection = () => {
                     stars = '⭐';
                 }
 
-                let message = `You complete the game!\nTime taken: ${Math.floor(timeTaken / 60)}:${String(timeTaken % 60).padStart(2, '0')}\nStars: ${stars}`;
+                let message = `เก่งมากผ่านด่านแล้ว!<br>
+ใช้เวลาไป: ${Math.floor(timeTaken / 60)}:${String(timeTaken % 60).padStart(2, '0')} นาที<br>
+จำนวนดาว!: ${stars}`;
 
                 const popup = document.createElement('div');
                 popup.style.position = 'fixed';
                 popup.style.top = '50%';
                 popup.style.left = '50%';
+                popup.style.fontSize = '20pt';
+                popup.style.width = '400px';
+                popup.style.height = '300px';
                 popup.style.transform = 'translate(-50%, -50%)';
-                popup.style.padding = '20px';
-                popup.style.backgroundColor = '#000000';
+                popup.style.padding = '10px';
+                popup.style.backgroundColor = '#886E58';
                 popup.style.color = '#fff';
                 popup.style.borderRadius = '10px';
+                popup.style.display = 'flex'; // ใช้ flexbox
+                popup.style.flexDirection = 'column'; // จัดเรียงเป็นแนวตั้ง
+                popup.style.justifyContent = 'space-between'; // กระจายช่องว่างระหว่างข้อความและปุ่ม
+                popup.style.alignItems = 'center'; // จัดตำแหน่งกลางในแนวนอน
                 popup.style.textAlign = 'center';
                 popup.style.zIndex = '1000';
+                popup.style.opacity = '0.9'; // ความโปร่งใสของ popup
+
                 popup.innerHTML = `
-                    <p>${message}</p>
-                    <button onclick="window.location.href='WordSearch3.html'">Next Page</button>
-                `;
+    <div style="flex-grow: 1; display: flex; align-items: center; justify-content: center;">
+        <p>${message}</p>
+    </div>
+    <div style="display: flex; gap: 10px;">
+        <button style="padding: 10px 20px; font-size: 25px; border: none; border-radius: 5px; background-color: #fff; color: #962727; cursor: pointer;"
+            onclick="window.location.href='WordSearch03.html'">ผจญภัยกันต่อ!!</button>
+    </div>
+`;
                 document.body.appendChild(popup);
             }
         } else {
