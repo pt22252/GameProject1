@@ -167,7 +167,7 @@ const stopSelection = () => {
     </div>
     <div style="display: flex; gap: 10px;">
         <button style="padding: 10px 20px; font-size: 25px; border: none; border-radius: 5px; background-color: #fff; color: #962727; cursor: pointer;"
-            onclick="window.location.href='Chapter.html'">จบเกมแล้วนะจ๊ะ</button>
+            onclick="window.location.href='SolveProblem1.html'">ผจญภัยกันต่อ!!</button>
     </div>
 `;
                 document.body.appendChild(popup);
