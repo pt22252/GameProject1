@@ -20,19 +20,14 @@
 
         table {
             width: 70%;
-            /* ขนาดตารางที่ปรับได้ตามหน้าจอ */
             max-width: 1300px;
-            /* ขนาดตารางสูงสุด */
             text-align: center;
             border-collapse: collapse;
-            /* ทำให้ตารางไม่ห่าง */
             border-radius: 10px;
-            /* ทำมุมโค้ง */
         }
 
         td {
             padding: 20px;
-            /* เพิ่มพื้นที่รอบ ๆ คอลัมน์ */
         }
 
         a {
@@ -42,31 +37,23 @@
             border-radius: 8px;
             text-align: center;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            /* เพิ่มเงาให้ลิงค์ */
             transition: background-color 0.3s ease;
-            /* เพิ่มการเปลี่ยนแปลงพื้นหลังเมื่อโฮเวอร์ */
         }
 
         a:hover {
             background-color: #ddd;
-            /* เปลี่ยนพื้นหลังเมื่อวางเมาส์ */
         }
 
         img {
             width: 100%;
-            /* ทำให้ภาพยืดตามขนาดของตาราง */
             height: auto;
-            /* รักษาสัดส่วน */
             object-fit: contain;
-            /* ทำให้รูปภาพพอดีกับพื้นที่ */
             border-radius: 8px;
-            /* มุมโค้งของรูปภาพ */
         }
 
         .text {
             color: rgb(255, 255, 255);
             font-size: 4vw;
-            /* ใช้ vw สำหรับขนาดตัวอักษรที่ปรับได้ตามหน้าจอ */
             font-weight: bold;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
             pointer-events: none;
@@ -75,10 +62,30 @@
 
         .header-text {
             font-size: 5rem;
-            /* ขนาดตัวอักษรของหัวข้อ */
             color: #fff;
             font-weight: bold;
             margin-bottom: 20px;
+        }
+
+        .back-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #843700;
+            color: rgb(255, 255, 255);
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 2rem;
+            font-weight: normal;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            border: 3px solid #ffffff;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .back-button:hover {
+            background-color: #d05c26;
+            transform: translateY(-2px);
         }
     </style>
 </head>
@@ -103,6 +110,9 @@
             </td>
         </tr>
     </table>
+
+    <!-- Back Button -->
+    <a href="HomeSelect.html" class="back-button">◀ กลับ</a>
 </body>
 
 </html>

@@ -45,6 +45,27 @@
             margin-top: 360px;
             /* ใช้แทนการจัดตำแหน่ง absolute */
         }
+
+        .back-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #843700;
+            color: rgb(255, 255, 255);
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 2rem;
+            font-weight: normal;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            border: 3px solid #ffffff;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .back-button:hover {
+            background-color: #d05c26;
+            transform: translateY(-2px);
+        }
     </style>
 
 </head>
@@ -53,6 +74,9 @@
     <div class="container">
         <a href="WordSearch01.html" class="text">START</a>
     </div>
+
+        <!-- Back Button -->
+        <a href="HomeSelect.html" class="back-button">◀ กลับ</a>
 </body>
 
 </html>
