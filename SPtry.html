@@ -95,14 +95,12 @@
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
-            background-color: rgba(208, 208, 208, 0.8);
-            color: rgb(3, 3, 3);
-            /* สีฟอนต์ */
+            background-color: rgba(243, 234, 234, 0.8);
+            color: rgb(226, 41, 41);
             padding: 30px;
             border-radius: 10px;
             text-align: center;
-            font-weight: 700;
-            /* ฟอนต์หนามาก */
+            font-weight: 800;
         }
 
         .popup img {
@@ -115,7 +113,7 @@
         }
 
         .popup .close-btn {
-            background-color: #e39e42;
+            background-color: #f3efeb;
             color: rgb(12, 11, 11);
             padding: 10px;
             border: none;
@@ -125,7 +123,7 @@
         }
 
         .popup .close-btn:hover {
-            background-color: #de902a;
+            background-color: #fafafa;
         }
     </style>
 </head>
@@ -188,12 +186,18 @@
 
                 // แสดงข้อความตอบกลับและควบคุมปุ่ม Next
                 if (isCorrect) {
+                    // ป๊อปอัพคำตอบถูกต้อง
+                    popupMessage.textContent = "ยินดีด้วย! เลือกได้เก่งมาก";
                     feedback.textContent = "ยินดีด้วย! เลือกได้เก่งมาก";
                     feedback.style.color = "green";
+                    popupImg.src = 'component/Wood1.png';  // แสดงภาพที่ถูกต้อง
+
                     applauseSound.play(); // เล่นเสียง
                     nextButton.style.display = "block"; // แสดงปุ่ม Next
+                    popup.style.display = 'block';  // แสดง Popup
+
                 } else {
-                    // ป๊อปอัพรูป
+                    // ป๊อปอัพคำตอบผิด
                     if (button.querySelector('img').alt === 'ไฟฉาย') {
                         popupImg.src = 'component/Flashlight1.png';
                     } else if (button.querySelector('img').alt === 'แครอท') {
