@@ -23,14 +23,19 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 100px;
-      margin-bottom: 170px;
+      gap: 80px; /* ลด gap สำหรับอุปกรณ์ขนาดเล็ก */
+      margin-bottom: 120px; /* ลด margin ในหน้าจอเล็ก */
     }
 
     img {
       max-width: 100%;
       height: auto;
-      width: 300px;
+      width: 300px; /* ขนาดรูปภาพเริ่มต้น */
+      transition: transform 0.3s ease;
+    }
+
+    img:hover {
+      transform: scale(1.05); /* เพิ่มเอฟเฟกต์ hover */
     }
 
     .chapter-button {
@@ -40,6 +45,29 @@
     .story-button {
       margin-bottom: 0px;
     }
+
+    /* Media Queries */
+    @media (max-width: 768px) {
+      .container {
+        gap: 50px; /* ลดระยะห่างระหว่างปุ่ม */
+        margin-bottom: 80px;
+      }
+
+      img {
+        width: 250px; /* ลดขนาดรูปภาพในหน้าจอแท็บเล็ต */
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        gap: 30px;
+        margin-bottom: 50px;
+      }
+
+      img {
+        width: 200px; /* ลดขนาดรูปภาพในหน้าจอมือถือ */
+      }
+    }
   </style>
 </head>
 
@@ -47,12 +75,12 @@
   <div class="container">
     <div>
       <a href="Chapter.html">
-        <img src="textimg/CHAPTERtxt.png" alt="" class="chapter-button">
+        <img src="textimg/CHAPTERtxt.png" alt="Chapter" class="chapter-button">
       </a>
     </div>
     <div>
       <a href="Story.html">
-        <img src="textimg/STORYtxt.png" alt="" class="story-button">
+        <img src="textimg/STORYtxt.png" alt="Story" class="story-button">
       </a>
     </div>
   </div>
