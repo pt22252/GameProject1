@@ -79,10 +79,7 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            width: fit-content;
+            display: none;
         }
 
         #next-button:hover {
@@ -149,7 +146,7 @@
             </div>
         </div>
         <div class="feedback"></div>
-        <button id="next-button" style="display: none;">ถัดไป</button>
+        <button id="next-button">ถัดไป</button>
     </div>
 
     <!-- Popup Modal -->
@@ -157,7 +154,6 @@
         <img src="" id="popup-img" alt="">
         <div class="popup-content">
             <p id="popup-message">ตอบผิด! กรุณาเลือกใหม่</p>
-            <button class="close-btn" id="close-btn">ตกลง</button>
         </div>
     </div>
 
@@ -167,7 +163,9 @@
                 const isCorrect = button.getAttribute('data-correct') === 'true';
                 const feedback = document.querySelector('.feedback');
                 const nextButton = document.getElementById('next-button');
-                const currentUrl = window.location.pathname;
+                const popup = document.getElementById('popup');
+                const popupImg = document.getElementById('popup-img');
+                const popupMessage = document.getElementById('popup-message');
 
                 // เพิ่มการอ้างอิงเสียง
                 const applauseSound = new Audio('reactionsounds/Correct.mp3');
@@ -191,32 +189,21 @@
                     nextButton.style.display = "block"; // แสดงปุ่ม Next
                 } else {
                     // ป๊อปอัพรูป
-                    const popup = document.getElementById('popup');
-                    const popupImg = document.getElementById('popup-img');
-                    const popupMessage = document.getElementById('popup-message');
-                    const closeBtn = document.getElementById('close-btn');
-
                     if (button.querySelector('img').alt === 'ไฟฉาย') {
                         popupImg.src = 'component/Flashlight1.png';
                     } else if (button.querySelector('img').alt === 'แครอท') {
                         popupImg.src = 'component/Carrot1.png';
                     }
+
+                    popupMessage.textContent = "ตอบผิด! กรุณาเลือกใหม่";
                     popup.style.display = 'block';
-                    popupMessage.textContent = "แย่จัง ใช้ไม่ได้ หนู ๆ ช่วยเลือกอีกครั้ง";
                     booSound.play(); // เล่นเสียง
 
-                    // ซ่อนปุ่ม Next
-                    nextButton.style.display = "none";
-
-                    // ปิดป๊อปอัพ
-                    closeBtn.addEventListener('click', () => {
-                        popup.style.display = 'none';
-                    });
-
-                    // ดีเลย์การรีโหลดหน้า
+                    // ปิดป๊อปอัพหลังจาก 1.5 วินาที
                     setTimeout(() => {
-                        location.reload();
-                    }, 2000); // ดีเลย์ 2 วินาที
+                        popup.style.display = 'none'; // ซ่อน Pop-up
+                        location.reload(); // รีโหลดหน้าใหม่
+                    }, 1500);
                 }
             });
         });
