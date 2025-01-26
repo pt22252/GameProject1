@@ -23,23 +23,37 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 90px; /* ลด gap สำหรับอุปกรณ์ขนาดเล็ก */
-      margin-bottom: 150px; /* ลด margin ในหน้าจอเล็ก */
+      gap: 90px;
+      /* ลด gap สำหรับอุปกรณ์ขนาดเล็ก */
+      margin-bottom: 150px;
+      /* ลด margin ในหน้าจอเล็ก */
     }
 
-    img {
-      max-width: 100%;
+    /* รูปภาพ Chapter */
+    .chapter-button {
+      width: 260px;
+      /* ขนาดที่คุณต้องการ */
       height: auto;
-      width: 300px; /* ขนาดรูปภาพเริ่มต้น */
       transition: transform 0.3s ease;
     }
 
+    /* รูปภาพ Story */
+    .story-button {
+      width: 220px;
+      /* ขนาดที่คุณต้องการ */
+      height: auto;
+      transition: transform 0.3s ease;
+    }
+
+    /* เอฟเฟกต์ hover */
     img:hover {
-      transform: scale(1.05); /* เพิ่มเอฟเฟกต์ hover */
+      transform: scale(1.05);
+      /* เพิ่มเอฟเฟกต์ hover */
     }
 
     .chapter-button {
       margin-bottom: 10px;
+      /* เพิ่ม margin ในระหว่างปุ่ม */
     }
 
     .story-button {
@@ -49,12 +63,19 @@
     /* Media Queries */
     @media (max-width: 768px) {
       .container {
-        gap: 50px; /* ลดระยะห่างระหว่างปุ่ม */
+        gap: 50px;
+        /* ลดระยะห่างระหว่างปุ่ม */
         margin-bottom: 80px;
       }
 
-      img {
-        width: 250px; /* ลดขนาดรูปภาพในหน้าจอแท็บเล็ต */
+      /* ขนาดภาพ Chapter สำหรับอุปกรณ์ขนาดกลาง */
+      .chapter-button {
+        width: 200px;
+      }
+
+      /* ขนาดภาพ Story สำหรับอุปกรณ์ขนาดกลาง */
+      .story-button {
+        width: 250px;
       }
     }
 
@@ -64,8 +85,14 @@
         margin-bottom: 50px;
       }
 
-      img {
-        width: 200px; /* ลดขนาดรูปภาพในหน้าจอมือถือ */
+      /* ขนาดภาพ Chapter สำหรับมือถือ */
+      .chapter-button {
+        width: 180px;
+      }
+
+      /* ขนาดภาพ Story สำหรับมือถือ */
+      .story-button {
+        width: 220px;
       }
     }
   </style>
@@ -73,12 +100,12 @@
 
 <body>
   <div class="container">
-    <div>
+    <div style="display: flex; justify-content: center; align-items: center;">
       <a href="Chapter.html">
         <img src="textimg/CHAPTERtxt.png" alt="Chapter" class="chapter-button">
       </a>
     </div>
-    <div>
+    <div style="display: flex; justify-content: center; align-items: center;">
       <a href="Story.html">
         <img src="textimg/STORYtxt.png" alt="Story" class="story-button">
       </a>

@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <title>End Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
     <style>
         body {
@@ -20,7 +26,8 @@
             font-family: 'Mali', sans-serif;
             color: black;
         }
-/*
+
+        /*
         .message-box {
             background: white;
             border: 5px solid #d2a679; 
@@ -44,30 +51,38 @@
         .button {
             background-color: #c18c5d;
             color: white;
-            padding: 10px 20px;
-            font-size: 18px;
+            padding: 20px 40px;
+            /* เพิ่มขนาด padding เพื่อทำให้ปุ่มใหญ่ขึ้น */
+            font-size: 24px;
+            /* ปรับขนาดตัวอักษรให้ใหญ่ขึ้น */
+            font-family: 'Mali', sans-serif;
+            /* เปลี่ยนฟอนต์เป็น Mali */
             border: none;
             border-radius: 10px;
             cursor: pointer;
-            margin-top: 0px;
+            margin-top: 20px;
+            /* เพิ่ม margin ด้านบนเพื่อห่างจากข้อความ */
+            transition: background-color 0.3s ease;
         }
-        
+
         .button:hover {
             background-color: #a5754a;
         }
     </style>
 </head>
+
 <body>
     <div class="end-container">
-        <h2>เก่งมาก! หนูช่วยตามหา<br> 
+        <h2>เก่งมาก! หนูช่วยตามหา<br>
             เพื่อนใหม่ ๆ และได้ช่วย<br>
             ผองเพื่อนสัตว์แก้ไขปัญหา</h2>
         <button class="button" onclick="goHome()">จบเกมแล้วจ้า</button>
     </div>
     <script>
         function goHome() {
-            window.location.href = "home.html"; 
+            window.location.href = "home.html";
         }
     </script>
-  </body>
+</body>
+
 </html>
