@@ -7,7 +7,7 @@ document.querySelectorAll('.option').forEach(button => {
 
 
         // เพิ่มการอ้างอิงเสียง
-        const applauseSound = new Audio('reactionsounds/applause.mp3'); // เสียงเมื่อถูก
+        const applauseSound = new Audio('reactionsounds/Correct.mp3'); // เสียงเมื่อถูก
         const booSound = new Audio('reactionsounds/boo.mp3'); // เสียงเมื่อผิด
 
         // หยุดเสียงก่อนหน้า (หากกำลังเล่นอยู่)
@@ -31,7 +31,7 @@ document.querySelectorAll('.option').forEach(button => {
                 feedback.textContent = "ยินดีด้วย! ไปหน้าถัดไป!";
             }
             feedback.style.color = "green";
-            applauseSound.play(); // เล่นเสียง applause.mp3
+            applauseSound.play(); // เล่นเสียง Correct.mp3
             nextButton.style.display = "block"; // แสดงปุ่ม Next
         } else {
             console.log("ตอบผิด!");

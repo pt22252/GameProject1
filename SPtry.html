@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solve Problem Game</title>
+    <!-- เชื่อมต่อ Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Mali:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('background/SolveProblems1.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            font-family: "Mali", serif;
+            color: #333333;
+        }
+
+        .game-container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            padding: 20px;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .question {
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .option-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .option {
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .option img {
+            width: 140px;
+            height: 140px;
+            object-fit: contain;
+            border-radius: 5px;
+        }
+
+        .feedback {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 16px;
+            color: #ff4500;
+        }
+
+        #next-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 20px;
+            font-weight: bold;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: fit-content;
+        }
+
+        #next-button:hover {
+            background-color: #45a049;
+        }
+
+        /* Popup styles */
+        .popup {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(224, 208, 208, 0.8);
+            color: rgb(23, 12, 12);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .popup img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .popup .popup-content {
+            margin-top: 20px;
+        }
+
+        .popup .close-btn {
+            background-color: #e39e42;
+            color: rgb(12, 11, 11);
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .popup .close-btn:hover {
+            background-color: #de902a;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="game-container">
+        <div class="question">
+            <p>พี่หมีอยากไปหาเพื่อนกวางฝั่งตรงข้าม <br>
+                ช่วยพาพี่หมีข้ามไปได้ไหม <br>
+                เอ~ พี่หมีควรใช้อะไรดี?</p>
+        </div>
+        <div class="options">
+            <div class="option-container">
+                <button class="option" data-correct="true">
+                    <img src="component\Wood1.png" alt="ท่อนไม้">
+                </button>
+                <button class="option" data-correct="false">
+                    <img src="component\Flashlight1.png" alt="ไฟฉาย">
+                </button>
+                <button class="option" data-correct="false">
+                    <img src="component\Carrot1.png" alt="แครอท">
+                </button>
+            </div>
+        </div>
+        <div class="feedback"></div>
+        <button id="next-button" style="display: none;">ถัดไป</button>
+    </div>
+
+    <!-- Popup Modal -->
+    <div class="popup" id="popup">
+        <img src="" id="popup-img" alt="">
+        <div class="popup-content">
+            <p id="popup-message">ตอบผิด! กรุณาเลือกใหม่</p>
+            <button class="close-btn" id="close-btn">ตกลง</button>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.option').forEach(button => {
+            button.addEventListener('click', () => {
+                const isCorrect = button.getAttribute('data-correct') === 'true';
+                const feedback = document.querySelector('.feedback');
+                const nextButton = document.getElementById('next-button');
+                const currentUrl = window.location.pathname;
+
+                // เพิ่มการอ้างอิงเสียง
+                const applauseSound = new Audio('reactionsounds/Correct.mp3');
+                const booSound = new Audio('reactionsounds/boo.mp3');
+
+                // หยุดเสียงก่อนหน้า
+                applauseSound.pause();
+                applauseSound.currentTime = 0;
+                booSound.pause();
+                booSound.currentTime = 0;
+
+                // ปิดการคลิกตัวเลือกทั้งหมด
+                const allOptions = document.querySelectorAll('.option');
+                allOptions.forEach(option => option.disabled = true);
+
+                // แสดงข้อความตอบกลับและควบคุมปุ่ม Next
+                if (isCorrect) {
+                    feedback.textContent = "ยินดีด้วย! ไปหน้าถัดไป!";
+                    feedback.style.color = "green";
+                    applauseSound.play(); // เล่นเสียง
+                    nextButton.style.display = "block"; // แสดงปุ่ม Next
+                } else {
+                    // ป๊อปอัพรูป
+                    const popup = document.getElementById('popup');
+                    const popupImg = document.getElementById('popup-img');
+                    const popupMessage = document.getElementById('popup-message');
+                    const closeBtn = document.getElementById('close-btn');
+
+                    if (button.querySelector('img').alt === 'ไฟฉาย') {
+                        popupImg.src = 'component/Flashlight1.png';
+                    } else if (button.querySelector('img').alt === 'แครอท') {
+                        popupImg.src = 'component/Carrot1.png';
+                    }
+                    popup.style.display = 'block';
+                    popupMessage.textContent = "แย่จัง ใช้ไม่ได้ หนู ๆ ช่วยเลือกอีกครั้ง";
+                    booSound.play(); // เล่นเสียง
+
+                    // ซ่อนปุ่ม Next
+                    nextButton.style.display = "none";
+
+                    // ปิดป๊อปอัพ
+                    closeBtn.addEventListener('click', () => {
+                        popup.style.display = 'none';
+                    });
+
+                    // ดีเลย์การรีโหลดหน้า
+                    setTimeout(() => {
+                        location.reload();
+                    }, 2000); // ดีเลย์ 2 วินาที
+                }
+            });
+        });
+
+        // เมื่อผู้ใช้คลิกปุ่ม Next ให้เปลี่ยนเส้นทางไปยังหน้าใหม่
+        document.getElementById('next-button').addEventListener('click', () => {
+            const currentUrl = window.location.pathname;
+
+            if (currentUrl.includes('SolveProblem1.html')) {
+                window.location.href = "SolveProblem2.html";
+            } else if (currentUrl.includes('SolveProblem2.html')) {
+                window.location.href = "SolveProblem3.html";
+            } else if (currentUrl.includes('SolveProblem3.html')) {
+                window.location.href = "EndGame.html";
+            }
+        });
+    </script>
+</body>
+
+</html>

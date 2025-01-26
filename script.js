@@ -7,7 +7,7 @@ document.querySelectorAll('.option').forEach(button => {
 
 
         // เพิ่มการอ้างอิงเสียง
-        const applauseSound = new Audio('reactionsounds/applause.mp3'); // เสียงเมื่อถูก
+        const applauseSound = new Audio('reactionsounds/Correct.mp3'); // เสียงเมื่อถูก
         const booSound = new Audio('reactionsounds/boo.mp3'); // เสียงเมื่อผิด
 
         // หยุดเสียงก่อนหน้า (หากกำลังเล่นอยู่)
