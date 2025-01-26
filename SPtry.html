@@ -66,7 +66,7 @@
             font-size: 20px;
             font-weight: bold;
             margin-top: 16px;
-            color: #ff4500;
+            color: #020202;
         }
 
         #next-button {
@@ -74,7 +74,7 @@
             padding: 10px 20px;
             font-size: 20px;
             font-weight: bold;
-            background-color: #4CAF50;
+            background-color: #2cb533;
             color: white;
             border: none;
             border-radius: 5px;
@@ -86,21 +86,23 @@
         }
 
         #next-button:hover {
-            background-color: #45a049;
+            background-color: #67b86d;
         }
 
-        /* Popup styles */
         .popup {
             display: none;
             position: fixed;
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
-            background-color: rgba(224, 208, 208, 0.8);
-            color: rgb(23, 12, 12);
+            background-color: rgba(208, 208, 208, 0.8);
+            color: rgb(3, 3, 3);
+            /* สีฟอนต์ */
             padding: 30px;
             border-radius: 10px;
             text-align: center;
+            font-weight: 700;
+            /* ฟอนต์หนามาก */
         }
 
         .popup img {
@@ -149,7 +151,7 @@
             </div>
         </div>
         <div class="feedback"></div>
-        <button id="next-button">ลุยกันต่อ!</button>
+        <button id="next-button">Next</button>
     </div>
 
     <!-- Popup Modal -->
@@ -186,7 +188,7 @@
 
                 // แสดงข้อความตอบกลับและควบคุมปุ่ม Next
                 if (isCorrect) {
-                    feedback.textContent = "ยินดีด้วย! ไปหน้าถัดไป!";
+                    feedback.textContent = "ยินดีด้วย! เลือกได้เก่งมาก";
                     feedback.style.color = "green";
                     applauseSound.play(); // เล่นเสียง
                     nextButton.style.display = "block"; // แสดงปุ่ม Next
@@ -206,7 +208,7 @@
                     setTimeout(() => {
                         popup.style.display = 'none'; // ซ่อน Pop-up
                         location.reload(); // รีโหลดหน้าใหม่
-                    }, 1500);
+                    }, 2000);
                 }
             });
         });
