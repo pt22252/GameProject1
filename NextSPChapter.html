@@ -38,6 +38,7 @@
             text-align: center;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             transition: background-color 0.3s ease;
+            text-decoration: none;
         }
 
         a:hover {
@@ -49,6 +50,7 @@
             height: auto;
             object-fit: contain;
             border-radius: 8px;
+            position: relative;
         }
 
         .text {
@@ -87,6 +89,33 @@
             background-color: #d05c26;
             transform: translateY(-2px);
         }
+
+        /* ปิดการใช้งานและขีดฆ่าปุ่ม SolveProblems */
+        .disabled {
+            position: relative;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        .disabled::after {
+            content: "✖";
+            position: absolute;
+            color: red;
+            font-size: 6vw;
+            /* เพิ่มขนาดของ X */
+            font-weight: 900;
+            /* เพิ่มความหนา */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+            /* เพิ่มความเด่น */
+        }
+
+        .disabled-text {
+            opacity: 0.5;
+            color: rgb(200, 200, 200);
+        }
     </style>
 </head>
 
@@ -103,10 +132,10 @@
                 <h1 class="text">WordSearch</h1>
             </td>
             <td>
-                <a href="SolveProblem1Chap.html">
+                <a href="javascript:void(0);" class="disabled">
                     <img src="component/solveproblems.png" alt="Solve Problems Game">
                 </a>
-                <h1 class="text">SolveProblems</h1>
+                <h1 class="text disabled-text">SolveProblems</h1>
             </td>
         </tr>
     </table>
