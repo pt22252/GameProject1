@@ -163,7 +163,7 @@ const stopSelection = () => {
 
                 popup.innerHTML = `
     <div style="flex-grow: 1; display: flex; align-items: center; justify-content: center;">
-        <p>${message}</p>
+         <p style="font-family: 'Mali', sans-serif;">${message}</p>
     </div>
     <div style="display: flex; gap: 10px;">
         <button style="padding: 10px 20px; font-size: 25px; border: none; border-radius: 5px; background-color: #fff; color: #962727; cursor: pointer;"
