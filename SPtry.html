@@ -95,12 +95,12 @@
             left: 50%;
             top: 50%;
             transform: translate(-50%, -50%);
-            background-color: rgba(243, 234, 234, 0.8);
-            color: rgb(226, 41, 41);
+            background-color: rgba(208, 208, 208, 0.8);
+            color: rgb(3, 3, 3);
             padding: 30px;
             border-radius: 10px;
             text-align: center;
-            font-weight: 800;
+            font-weight: 700;
         }
 
         .popup img {
@@ -113,7 +113,7 @@
         }
 
         .popup .close-btn {
-            background-color: #f3efeb;
+            background-color: #e39e42;
             color: rgb(12, 11, 11);
             padding: 10px;
             border: none;
@@ -123,7 +123,7 @@
         }
 
         .popup .close-btn:hover {
-            background-color: #fafafa;
+            background-color: #de902a;
         }
     </style>
 </head>
@@ -148,15 +148,14 @@
                 </button>
             </div>
         </div>
-        <div class="feedback"></div>
-        <button id="next-button">Next</button>
     </div>
 
     <!-- Popup Modal -->
     <div class="popup" id="popup">
         <img src="" id="popup-img" alt="">
         <div class="popup-content">
-            <p id="popup-message">แย่จัง~ ใช้ไม่ได้ น้อง ๆ ช่วยเลือกใหม่ได้ไหม?</p>
+            <p id="popup-message"></p>
+            <button id="next-button">Next</button>
         </div>
     </div>
 
@@ -164,11 +163,10 @@
         document.querySelectorAll('.option').forEach(button => {
             button.addEventListener('click', () => {
                 const isCorrect = button.getAttribute('data-correct') === 'true';
-                const feedback = document.querySelector('.feedback');
-                const nextButton = document.getElementById('next-button');
                 const popup = document.getElementById('popup');
                 const popupImg = document.getElementById('popup-img');
                 const popupMessage = document.getElementById('popup-message');
+                const nextButton = document.getElementById('next-button');
 
                 // เพิ่มการอ้างอิงเสียง
                 const applauseSound = new Audio('reactionsounds/Correct.mp3');
@@ -184,36 +182,24 @@
                 const allOptions = document.querySelectorAll('.option');
                 allOptions.forEach(option => option.disabled = true);
 
-                // แสดงข้อความตอบกลับและควบคุมปุ่ม Next
+                // แสดงป๊อปอัพและจัดการข้อความ/ปุ่ม Next
                 if (isCorrect) {
-                    // ป๊อปอัพคำตอบถูกต้อง
+                    popupImg.src = 'component/Wood1.png';  // รูปที่ถูกต้อง
                     popupMessage.textContent = "ยินดีด้วย! เลือกได้เก่งมาก";
-                    feedback.textContent = "ยินดีด้วย! เลือกได้เก่งมาก";
-                    feedback.style.color = "green";
-                    popupImg.src = 'component/Wood1.png';  // แสดงภาพที่ถูกต้อง
-
-                    applauseSound.play(); // เล่นเสียง
                     nextButton.style.display = "block"; // แสดงปุ่ม Next
-                    popup.style.display = 'block';  // แสดง Popup
-
+                    applauseSound.play(); // เล่นเสียง
                 } else {
-                    // ป๊อปอัพคำตอบผิด
                     if (button.querySelector('img').alt === 'ไฟฉาย') {
                         popupImg.src = 'component/Flashlight1.png';
                     } else if (button.querySelector('img').alt === 'แครอท') {
                         popupImg.src = 'component/Carrot1.png';
                     }
-
                     popupMessage.textContent = "แย่จัง~ ใช้ไม่ได้ น้อง ๆ ช่วยเลือกใหม่ได้ไหม?";
-                    popup.style.display = 'block';
+                    nextButton.style.display = "none"; // ซ่อนปุ่ม Next
                     booSound.play(); // เล่นเสียง
-
-                    // ปิดป๊อปอัพหลังจาก 1.5 วินาที
-                    setTimeout(() => {
-                        popup.style.display = 'none'; // ซ่อน Pop-up
-                        location.reload(); // รีโหลดหน้าใหม่
-                    }, 2000);
                 }
+
+                popup.style.display = 'block'; // แสดง Pop-up
             });
         });
 
