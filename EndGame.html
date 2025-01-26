@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
@@ -13,14 +12,62 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-image: url('background/Endgame.png');
+            background-image: url('background/EndStory.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             text-align: center;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Mali', sans-serif;
+            color: black;
+        }
+/*
+        .message-box {
+            background: white;
+            border: 5px solid #d2a679; 
+            padding: 20px;
+            width: 50%;
+            margin: 100px auto;
+            border-radius: 15px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+        }
+*/
+        .end-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 0px;
+            font-size: 1.2rem;
+
+        }
+
+        .button {
+            background-color: #c18c5d;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 0px;
+        }
+        
+        .button:hover {
+            background-color: #a5754a;
         }
     </style>
 </head>
-
+<body>
+    <div class="end-container">
+        <h2>เก่งมาก! หนูช่วยตามหา<br> 
+            เพื่อนใหม่ ๆ และได้ช่วย<br>
+            ผองเพื่อนสัตว์แก้ไขปัญหา</h2>
+        <button class="button" onclick="goHome()">จบเกมแล้วจ้า</button>
+    </div>
+    <script>
+        function goHome() {
+            window.location.href = "home.html"; 
+        }
+    </script>
+  </body>
 </html>
