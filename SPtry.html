@@ -96,7 +96,7 @@
             top: 50%;
             transform: translate(-50%, -50%);
             background-color: rgba(208, 208, 208, 0.8);
-            color: rgb(3, 3, 3);
+            color: rgb(226, 2, 2);
             padding: 30px;
             border-radius: 10px;
             text-align: center;
@@ -124,6 +124,11 @@
 
         .popup .close-btn:hover {
             background-color: #de902a;
+        }
+
+        /* สีเขียวสำหรับข้อความที่ถูกต้อง */
+        .correct-message {
+            color: green;
         }
     </style>
 </head>
@@ -186,7 +191,14 @@
                 if (isCorrect) {
                     popupImg.src = 'component/Wood1.png';  // รูปที่ถูกต้อง
                     popupMessage.textContent = "ยินดีด้วย! เลือกได้เก่งมาก";
+                    popupMessage.classList.add('correct-message'); // เพิ่มคลาสสีเขียว
                     nextButton.style.display = "block"; // แสดงปุ่ม Next
+
+                    // ให้ปุ่ม Next หายไปหลังจาก 1.5 วินาที
+                    setTimeout(() => {
+                        nextButton.style.display = "none";
+                    }, 1500);
+
                     applauseSound.play(); // เล่นเสียง
                 } else {
                     if (button.querySelector('img').alt === 'ไฟฉาย') {
@@ -215,6 +227,61 @@
                 window.location.href = "EndGame.html";
             }
         });
+        document.querySelectorAll('.option').forEach(button => {
+            button.addEventListener('click', () => {
+                const isCorrect = button.getAttribute('data-correct') === 'true';
+                const popup = document.getElementById('popup');
+                const popupImg = document.getElementById('popup-img');
+                const popupMessage = document.getElementById('popup-message');
+                const nextButton = document.getElementById('next-button');
+
+                // เพิ่มการอ้างอิงเสียง
+                const applauseSound = new Audio('reactionsounds/Correct.mp3');
+                const booSound = new Audio('reactionsounds/boo.mp3');
+
+                // หยุดเสียงก่อนหน้า
+                applauseSound.pause();
+                applauseSound.currentTime = 0;
+                booSound.pause();
+                booSound.currentTime = 0;
+
+                // ปิดการคลิกตัวเลือกทั้งหมด
+                const allOptions = document.querySelectorAll('.option');
+                allOptions.forEach(option => option.disabled = true);
+
+                // แสดงป๊อปอัพและจัดการข้อความ/ปุ่ม Next
+                if (isCorrect) {
+                    popupImg.src = 'component/Wood1.png';  // รูปที่ถูกต้อง
+                    popupMessage.textContent = "ยินดีด้วย! เลือกได้เก่งมาก";
+                    popupMessage.classList.add('correct-message'); // เพิ่มคลาสสีเขียว
+                    nextButton.style.display = "block"; // แสดงปุ่ม Next
+
+                    // ให้ปุ่ม Next หายไปหลังจาก 1.5 วินาที
+                    setTimeout(() => {
+                        nextButton.style.display = "none";
+                    }, 1500);
+
+                    applauseSound.play(); // เล่นเสียง
+                } else {
+                    if (button.querySelector('img').alt === 'ไฟฉาย') {
+                        popupImg.src = 'component/Flashlight1.png';
+                    } else if (button.querySelector('img').alt === 'แครอท') {
+                        popupImg.src = 'component/Carrot1.png';
+                    }
+                    popupMessage.textContent = "แย่จัง~ ใช้ไม่ได้ น้อง ๆ ช่วยเลือกใหม่ได้ไหม?";
+                    nextButton.style.display = "none"; // ซ่อนปุ่ม Next
+                    booSound.play(); // เล่นเสียง
+                }
+
+                popup.style.display = 'block'; // แสดง Pop-up
+
+                // ซ่อน Pop-up หลังจาก 1.5 วินาที
+                setTimeout(() => {
+                    popup.style.display = 'none';
+                }, 1500);
+            });
+        });
+
     </script>
 </body>
 
