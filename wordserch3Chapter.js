@@ -138,8 +138,8 @@ const stopSelection = () => {
                 }
 
                 let message = `เก่งมากผ่านด่านแล้ว!<br>
-ใช้เวลาไป: ${Math.floor(timeTaken / 60)}:${String(timeTaken % 60).padStart(2, '0')} นาที<br>
-จำนวนดาว!: ${stars}`;
+                ใช้เวลาไป: ${Math.floor(timeTaken / 60)}:${String(timeTaken % 60).padStart(2, '0')} นาที<br>
+                จำนวนดาว!: ${stars}`;
 
                 const popup = document.createElement('div');
                 popup.style.position = 'fixed';
@@ -162,14 +162,14 @@ const stopSelection = () => {
                 popup.style.opacity = '0.9'; // ความโปร่งใสของ popup
 
                 popup.innerHTML = `
-    <div style="flex-grow: 1; display: flex; align-items: center; justify-content: center;">
-        <p>${message}</p>
-    </div>
-    <div style="display: flex; gap: 10px;">
-        <button style="padding: 10px 20px; font-size: 25px; border: none; border-radius: 5px; background-color: #fff; color: #962727; cursor: pointer;"
-            onclick="window.location.href='NextWSChapter.html'">จบเกมแล้วนะจ๊ะ</button>
-    </div>
-`;
+                    <div style="flex-grow: 1; display: flex; align-items: center; justify-content: center;">
+                        <p style="font-family: 'Mali', sans-serif;">${message}</p>
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <button style="padding: 10px 20px; font-size: 25px; border: none; border-radius: 5px; background-color: #fff; color: #962727; cursor: pointer; font-family: 'Mali', sans-serif;"
+                            onclick="window.location.href='NextWSChapter.html'">จบเกมแล้วนะจ๊ะ</button>
+                    </div>
+                `;
                 document.body.appendChild(popup);
             }
         } else {
