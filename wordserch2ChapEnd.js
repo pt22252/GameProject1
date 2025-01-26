@@ -1,4 +1,4 @@
-const words = ["DEER", "VULTURE", "HORSE", "ELEPHANT", "HAWK", "KANGAROO", "LION", "HYENA", "LEOPARD"];
+const words = ["WHALE", "DOLPHIN", "SHARK", "GOLDFISH", "WALRUS", "CRAB", "SEAL", "OCTOPUS", "SNAIL"];
 const gridSize = 10;
 let timerInterval;
 let seconds = 0;
@@ -75,15 +75,15 @@ const startSelection = (event) => {
 const wordListElement = document.getElementById("word-list");
 
 const animalSounds = {
-    "DEER": new Audio("animalsound/deer.mp3"),
-    "VULTURE": new Audio("animalsound/vulture.mp3"),
-    "HORSE": new Audio("animalsound/horse.mp3"),
-    "ELEPHANT": new Audio("animalsound/elephant.mp3"),
-    "HAWK": new Audio("animalsound/hawk.mp3"),
-    "KANGAROO": new Audio("animalsound/kangaroo.mp3"),
-    "LION": new Audio("animalsound/lion.mp3"),
-    "HYENA": new Audio("animalsound/hyena.mp3"),
-    "LEOPARD": new Audio("animalsound/leopard.mp3")
+    "WHALE": new Audio("animalsound/whale.mp3"),
+    "DOLPHIN": new Audio("animalsound/dolphin.mp3"),
+    "SHARK": new Audio("animalsound/shark.mp3"),
+    "GOLDFISH": new Audio("animalsound/goldfish.mp3"),
+    "WALRUS": new Audio("animalsound/walrus.mp3"),
+    "CRAB": new Audio("animalsound/crab.mp3"),
+    "SEAL": new Audio("animalsound/seal.mp3"),
+    "OCTOPUS": new Audio("animalsound/octopus.mp3"),
+    "SNAIL": new Audio("animalsound/snail.mp3")
 };
 
 const markWordAsFound = (word) => {
@@ -138,8 +138,8 @@ const stopSelection = () => {
                 }
 
                 let message = `เก่งมากผ่านด่านแล้ว!<br>
-                ใช้เวลาไป: ${Math.floor(timeTaken / 60)}:${String(timeTaken % 60).padStart(2, '0')} นาที<br>
-                จำนวนดาว!: ${stars}`;
+ใช้เวลาไป: ${Math.floor(timeTaken / 60)}:${String(timeTaken % 60).padStart(2, '0')} นาที<br>
+จำนวนดาว!: ${stars}`;
 
                 const popup = document.createElement('div');
                 popup.style.position = 'fixed';
@@ -162,14 +162,14 @@ const stopSelection = () => {
                 popup.style.opacity = '0.9'; // ความโปร่งใสของ popup
 
                 popup.innerHTML = `
-                    <div style="flex-grow: 1; display: flex; align-items: center; justify-content: center;">
-                        <p style="font-family: 'Mali', sans-serif;">${message}</p>
-                    </div>
-                    <div style="display: flex; gap: 10px;">
-                        <button style="padding: 10px 20px; font-size: 25px; border: none; border-radius: 5px; background-color: #fff; color: #962727; cursor: pointer; font-family: 'Mali', sans-serif;"
-                            onclick="window.location.href='EndGame.html'">จบเกมแล้วนะจ๊ะ</button>
-                    </div>
-                `;
+    <div style="flex-grow: 1; display: flex; align-items: center; justify-content: center;">
+        <p>${message}</p>
+    </div>
+    <div style="display: flex; gap: 10px;">
+        <button style="padding: 10px 20px; font-size: 25px; border: none; border-radius: 5px; background-color: #fff; color: #962727; cursor: pointer;"
+            onclick="window.location.href='WordSearch03ChapEnd.html'">ผจญภัยกันต่อ!!</button>
+    </div>
+`;
                 document.body.appendChild(popup);
             }
         } else {
