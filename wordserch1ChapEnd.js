@@ -222,7 +222,7 @@ const showPopup = (timeTaken, stars) => {
             <p>${message}</p>
         </div>
         <div style="display: flex; gap: 10px;">
-            <button style="padding: 10px 20px; font-size: 25px; border: none; border-radius: 5px; background-color: #fff; color: #962727; cursor: pointer;"
+            <button style="padding: 10px 20px; font-size: 25px; border: none; border-radius: 5px; background-color: #fff; color: #962727; cursor: pointer; font-family: 'Mali', sans-serif;"
                 onclick="window.location.href='WordSearch02ChapEnd.html'">ผจญภัยกันต่อ!!</button>
         </div>
     `;
